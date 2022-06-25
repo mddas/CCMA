@@ -48,30 +48,43 @@
                     </li>
                     <li class="menu-item">
                         <a href="{{route('subcategoryread')}}" > <i class="menu-icon fa fa-cogs"></i>Sub Menu</a>
-                    </li>
+                    </li>                   
 <!------------------------------------------------------------------------------------------------->
-                    <li class="menu-title">MEDIA</li>
-                    <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>IMAGES</a>
+                                         <!---   <option value="common">SINGLE COMMON PAGE</option>
+                                            <option value="galary">SINGLE GALLARY PAGE </option>
+                                            <option value="video">SINGLE VIDEO PAGE</option>
+                                            <option value="notice">SINGLE NOTICE PAGE</option>--->
+                       <!--------Page Type------>
+                    <li class="menu-title">PAGE TYPE</li><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="{{route('CommonPageRead')}}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>COMMON PAGE</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('CommonPageRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('CommonPageAddForm')}}">Add</a></li>
+                        </ul>
                     </li>
-                    <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>VIDEOS</a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="{{route('GalaryPageRead')}}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>GALARY PAGE</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('GalaryPageRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('GalaryPageAddForm')}}">Add</a></li>
+                        </ul>
                     </li>
-                    <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>DOWNLOADS</a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="{{route('InstituteDetails')}}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>VIDEO PAGE</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('VideoPageRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('VideoPageAddForm')}}">Add</a></li>
+                        </ul>
                     </li>
-<!------------------------------------------------------------------------------------------------>
-                    <li class="menu-title">NOTICE</li>
-                    <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>NOTICE</a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="{{route('InstituteDetails')}}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>NOTICE PAGE</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('NoticePageRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('NoticePageAddForm')}}">Add</a></li>
+                        </ul>
                     </li>
-<!-------------------------------------------------------------------------------------------------->
-                    <li class="menu-title">COMMON PAGE</li>
-                    <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>COMMON</a>
-                    </li>
-<!------------------------------------------------------------------------------------------------->
-                    
+<!--************************************************************************************************-->
 
                     <!-----end left panel---->
                 </ul>

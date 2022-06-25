@@ -9,6 +9,10 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\CommonPageController;
+use App\Http\Controllers\GalaryPageController;
+use App\Http\Controllers\VideoPageController;
+use App\Http\Controllers\NoticePageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,10 +61,35 @@ Route::get('/admin/menu/delete/{slug}',[CategoryController::class,'delete'])->na
 Route::get('/admin/menu/view/{slug}',[CategoryController::class,'view'])->name('categoryview');
 
 
-//***********SubCategoryController*******************/
+//***********SubCategoryController*******************************************/
 Route::get('/admin/submenu',[SubcategoryController::class,'index'])->name('subcategoryread');
 Route::post('/admin/add-submenu',[SubcategoryController::class,'store'])->name('subcategoryadd');
 Route::get('/admin/submenu/edit/{slug}',[SubcategoryController::class,'edit'])->name('subcategoryedit');
 Route::get('/admin/submenu/view/{slug}',[SubcategoryController::class,'view'])->name('subcategoryview');
 Route::get('/admin/submenu/delete/{slug}',[SubcategoryController::class,'delete'])->name('subcategorydelete');
 
+//**************************Page Type*************************************** */
+         //*******************CommanPageController**********************/
+Route::get('/admin/page_type/common_page/view',[CommonPageController::class,'index'])->name('CommonPageRead');
+Route::get('/admin/page_type/common_page/add-form',[CommonPageController::class,'addform'])->name('CommonPageAddForm');
+Route::get('/admin/page_type/common_page/store',[CommonPageController::class,'store'])->name('CommonPageStore');
+Route::get('/admin/page_type/common_page/edit',[CommonPageController::class,'edit'])->name('CommonPageEdit');
+Route::get('/admin/page_type/common_page/delete',[CommonPageController::class,'delete'])->name('CommonPageDelete');
+        //*******************VideoPageController**********************/
+Route::get('/admin/page_type/video_page/view',[VideoPageController::class,'index'])->name('VideoPageRead');
+Route::get('/admin/page_type/video_page/add-form',[VideoPageController::class,'addform'])->name('VideoPageAddForm');
+Route::get('/admin/page_type/video_page/store',[VideoPageController::class,'store'])->name('VideoPageStore');
+Route::get('/admin/page_type/video_page/edit',[VideoPageController::class,'edit'])->name('VideoPageEdit');
+Route::get('/admin/page_type/video_page/delete',[VideoPageController::class,'delete'])->name('VideoPageDelete');
+        //*******************GallaryPageController**********************/
+Route::get('/admin/page_type/galary_page/view',[GalaryPageController::class,'index'])->name('GalaryPageRead');
+Route::get('/admin/page_type/galary_page/add-form',[GalaryPageController::class,'addForm'])->name('GalaryPageAddForm');
+Route::get('/admin/page_type/galary_page/store',[GalaryPageController::class,'store'])->name('GalaryPageStore');
+Route::get('/admin/page_type/galary_page/edit',[GalaryPageController::class,'edit'])->name('GalaryPageEdit');
+Route::get('/admin/page_type/galary_page/delete',[GalaryPageController::class,'delete'])->name('GalaryPageDelete');
+        //*******************NoticePageController**********************/
+Route::get('/admin/page_type/notice_page/view',[NoticePageController::class,'index'])->name('NoticePageRead');
+Route::get('/admin/page_type/notice_page/add-form',[NoticePageController::class,'addForm'])->name('NoticePageAddForm');
+Route::get('/admin/page_type/notice_page/store',[NoticePageController::class,'store'])->name('NoticePageStore');
+Route::get('/admin/page_type/notice_page/edit',[NoticePageController::class,'edit'])->name('NoticePageEdit');
+Route::get('/admin/page_type/notice_page/delete',[NoticePageController::class,'delete'])->name('NoticePageDelete');
