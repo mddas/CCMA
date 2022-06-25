@@ -51,12 +51,15 @@ Route::get('/admin/staff',[StaffController::class,'index'])->name('staff');
 
 //*************CategoryController*******************/
 Route::get('/admin/menu',[CategoryController::class,'index'])->name('categoryread');
+Route::post('/admin/add-menu',[CategoryController::class,'store'])->name('categoryadd');
 Route::get('/admin/menu/edit/{slug}',[CategoryController::class,'edit'])->name('categoryedit');
-Route::get('/admin/menu/view/{slug}',[CategoryController::class,'view'])->name('categoryview');
 Route::get('/admin/menu/delete/{slug}',[CategoryController::class,'delete'])->name('categorydelete');
+Route::get('/admin/menu/view/{slug}',[CategoryController::class,'view'])->name('categoryview');
+
 
 //***********SubCategoryController*******************/
 Route::get('/admin/submenu',[SubcategoryController::class,'index'])->name('subcategoryread');
+Route::post('/admin/add-submenu',[SubcategoryController::class,'store'])->name('subcategoryadd');
 Route::get('/admin/submenu/edit/{slug}',[SubcategoryController::class,'edit'])->name('subcategoryedit');
 Route::get('/admin/submenu/view/{slug}',[SubcategoryController::class,'view'])->name('subcategoryview');
 Route::get('/admin/submenu/delete/{slug}',[SubcategoryController::class,'delete'])->name('subcategorydelete');

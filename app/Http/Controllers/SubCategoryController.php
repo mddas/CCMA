@@ -10,34 +10,34 @@ use Illuminate\Http\Request;
 class SubCategoryController extends Controller
 {
     public function index(){
-        return view("dashboard.nevigation.submenu")->with(["categories"=>Category::all(),"subcategories"=>SubCategory::all()]);;
+        return view("dashboard.nevigation.submenu")->with(["categories"=>Category::all()->where('type','group'),"subcategories"=>SubCategory::all()]);;
     }
-    public function Add(Request $req){
+    public function store(Request $req){
         //dd($req);
         $validated = $req->validate([
         'name' => 'required',
-         'category_id'=> 'required',
+        'subcategory_id'=>'require',
+         'type'=> 'required',
         ]);
-       if($req->file('image')){
-                //return($req->file('image'));
-                $file= $req->file('image');
-                $name = date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('category'), $name);
-       }
-       else{
-           $name=null;
-       }
+       
        $category = SubCategory::updateOrCreate(
             ['id' => $req['id']],
             [
             'name'=>$req['name'],
-            'image'=>$name,
             'category_id'=>$req['category_id'],
+            'type'=>$req['type'],//common,gallary,video,download,notice or events
         ]);
-        Session::flash('message', 'Inserted Successfully'); 
-        Session::flash('alert-success', 'success');
-        return redirect("/admin/subcategory");
-        //return Category::all();        
+        if($category==TRUE){
+            Session::flash('message', 'Inserted Successfully'); 
+            Session::flash('alert-success', 'success');
+            return redirect(route("subcategoryread"));
+            //return Category::all();
+        }
+        else{
+            Session::flash('message', 'Failed to insert'); 
+            Session::flash('alert-danger', 'danger');
+            return redirect(route('subcategoryread'));
+        }        
     }
     public function edit($slug){
         return "edit";
@@ -50,3 +50,8 @@ class SubCategoryController extends Controller
         return redirect(route("categorydelete"));
     }
 }
+
+//category pagination type shoul be two
+//a)single, if single then ask page type
+//b)group ,if group then don't ask any things
+

@@ -61,15 +61,26 @@
                                         @foreach($categories as $category)
                                         <tr>
                                             <td class="serial">1.</td>
-                                            <td> {{$category->name}} </td>
-                                            <td>  <span class="name">{{$category->discription}}</span> </td>
-                                            <td> <span class="product">{{$category->number}}</span> </td>
+                                            <td> {{$category->name}}</td>
+                                            <td>  <span class="name">{{$category->type}}</span> </td>
+                                            <td>
+                                                @if($category->getSubcategory->count()==0) 
+                                                <button type="button" class="btn btn-primary btn-sm">null</button>
+                                                @else
+                                                @foreach($category->getSubcategory as $subcategory)
+                                                <span class="product">
+                                                   <button type="button" class="btn btn-primary btn-sm">{{$subcategory->name}}</button>                                                   
+                                                </span>
+                                                @endforeach
+                                                @endif
+                                            </td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;">
+                                                        <!----route('EditInstituteDetails',$detail->id)---->
                                                             <a class="dropdown-item" href="{{route('categoryedit',$category->id)}}">Edit</a>
                                                             <a class="dropdown-item" href="{{route('categorydelete',$category->id)}}">delete</a>
                                                             <a class="dropdown-item" href="{{route('categoryview',$category->id)}}">View</a>                                                            
@@ -99,7 +110,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="mediumModalLabel">Medium Modal</h5>
+                            <h5 class="modal-title" id="mediumModalLabel">MENUS</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -110,68 +121,40 @@
                                  <!----form start------>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <form action="{{route('StoreInstituteDetails')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('categoryadd')}}" method="post" enctype="multipart/form-data">
                             @csrf
                         <div class="card">
                             <div class="card-header">
-                                <strong>Add</strong> <small> Institute Details</small>
+                                <strong>Add</strong> <small> Menus</small>
                             </div>
                             <div class="card-body card-block">
+                                
                                 <div class="form-group">
-                                    <label class=" form-control-label">Institute Name</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                                            </svg>
-                                        </div>
-                                        <input type="text" name="name" class="form-control">
-                                    </div>
-                                    <small class="form-text text-muted">ex. Arniko H.S.S</small>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Institute Started from</label>
+                                    <label class=" form-control-label">Menu Name</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                        <input name="date" type="date" class="form-control">
+                                        <input name="name" type="text" class="form-control">
                                     </div>
-                                    <small class="form-text text-muted">ex. 99/99/9999</small>
+                                    <small class="form-text text-muted">ex. Notice</small>
                                 </div>
+
                                 <div class="form-group">
-                                    <label class=" form-control-label">Contact Number</label>
+                                    <label class=" form-control-label">Page Type</label>
                                     <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                        <input type="text" name="number" class="form-control">
+                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                        <select class="form-select" aria-label="Default select example" name="type">
+                                            <option selected>Please Select Category</option>
+                                                 <option value="common">SINGLE COMMON PAGE</option>
+                                                 <option value="galary">SINGLE GALLARY PAGE </option>
+                                                 <option value="video">SINGLE VIDEO PAGE</option>
+                                                 <option value="notice">SINGLE NOTICE PAGE</option>
+                                                 <option value="group">GROUP</option>
+                                            </select>
                                     </div>
-                                    <small class="form-text text-muted">ex. 9808059156</small>
-                                </div>
-                                 <div class="form-group">
-                                    <label class=" form-control-label">E-mail</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
-                                        <input type="email" name="email" class="form-control">
-                                    </div>
-                                    <small class="form-text text-muted">ex. college@gmail.com</small>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Address</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
-  <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
-</svg></div>
-                                        <input type="text" name="address" class="form-control">
-                                    </div>
-                                    <small class="form-text text-muted">ex. Biratnagar 5</small>
-                                </div>
-                                  <div class="form-group">
-                                    <label class=" form-control-label">Institue description</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                                        <textarea name="discription" class="form-control"></textarea>
-                                    </div>
-                                    <small class="form-text text-muted">ex. Describe your company</small>
-                                </div>
+                                    <small class="form-text text-muted">Common/gallary/video/notice/</small>
+                                </div>                               
+                                 
+                                  
                                 
                               <!------form group closed---->
 
