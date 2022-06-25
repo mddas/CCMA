@@ -22,8 +22,6 @@ class InstituteDetailsController extends Controller
         'email'=>'required',
         'address'=>'required',
         'discription'=>'required',
-        'logo'=>'required',
-        'image'=>'required',
         ]);
         //dd($req);
        if($req->file('image')){
@@ -33,7 +31,7 @@ class InstituteDetailsController extends Controller
                 $file-> move(public_path('/images/institute_details/'), $company_image);
        }
        else{
-          $company_image = "null";
+          $company_image = null;
        }
 
         if($req->file('logo')){
@@ -43,7 +41,7 @@ class InstituteDetailsController extends Controller
                 $file-> move(public_path('/images/institute_details/'), $company_logo);
        }
        else{
-          $company_logo = "null";
+          $company_logo = null;
        }
        $institutedetails = InstituteDetails::updateOrCreate(
             ['id' => $req['id']],
@@ -74,7 +72,7 @@ class InstituteDetailsController extends Controller
     public function delete($slug){
         $institutedetails = InstituteDetails::find($slug)->delete();
         if($institutedetails==TRUE){
-             Session::flash('message', 'Failed to Insert'); 
+             Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('InstituteDetails'));
         }       

@@ -44,10 +44,10 @@
 <!------------------------------------------------------------------------------------------------>
                     <li class="menu-title">NAVIGATION</li><!-- /.menu-title -->
                     <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>Menu</a>
+                        <a href="{{route('categoryread')}}" > <i class="menu-icon fa fa-cogs"></i>Menu</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" > <i class="menu-icon fa fa-cogs"></i>Sub Menu</a>
+                        <a href="{{route('subcategoryread')}}" > <i class="menu-icon fa fa-cogs"></i>Sub Menu</a>
                     </li>
 <!------------------------------------------------------------------------------------------------->
                     <li class="menu-title">MEDIA</li>

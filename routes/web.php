@@ -7,6 +7,8 @@ use App\Http\Controllers\LinksController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,4 +48,16 @@ Route::get('/admin/institute/seo',[SeoController::class,'index'])->name('seo');
 //**************Students controller****************/
 Route::get('/admin/student',[StudentController::class,'index'])->name('student');
 Route::get('/admin/staff',[StaffController::class,'index'])->name('staff');
+
+//*************CategoryController*******************/
+Route::get('/admin/menu',[CategoryController::class,'index'])->name('categoryread');
+Route::get('/admin/menu/edit/{slug}',[CategoryController::class,'edit'])->name('categoryedit');
+Route::get('/admin/menu/view/{slug}',[CategoryController::class,'view'])->name('categoryview');
+Route::get('/admin/menu/delete/{slug}',[CategoryController::class,'delete'])->name('categorydelete');
+
+//***********SubCategoryController*******************/
+Route::get('/admin/submenu',[SubcategoryController::class,'index'])->name('subcategoryread');
+Route::get('/admin/submenu/edit/{slug}',[SubcategoryController::class,'edit'])->name('subcategoryedit');
+Route::get('/admin/submenu/view/{slug}',[SubcategoryController::class,'view'])->name('subcategoryview');
+Route::get('/admin/submenu/delete/{slug}',[SubcategoryController::class,'delete'])->name('subcategorydelete');
 
