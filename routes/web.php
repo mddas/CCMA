@@ -13,6 +13,7 @@ use App\Http\Controllers\CommonPageController;
 use App\Http\Controllers\GalaryPageController;
 use App\Http\Controllers\VideoPageController;
 use App\Http\Controllers\NoticePageController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +25,9 @@ use App\Http\Controllers\NoticePageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -93,3 +94,8 @@ Route::get('/admin/page_type/notice_page/add-form',[NoticePageController::class,
 Route::POST('/admin/page_type/notice_page/store',[NoticePageController::class,'store'])->name('NoticePageStore');
 Route::get('/admin/page_type/notice_page/edit/{id}',[NoticePageController::class,'edit'])->name('NoticePageEdit');
 Route::get('/admin/page_type/notice_page/delete/{id}',[NoticePageController::class,'delete'])->name('NoticePageDelete');
+
+       //********************HOMECONTROLLER*******************************/
+Route::get('',[HomeController::class,'index'])->name('home');
+Route::get('menu/{menu}',[HomeController::class,'menu'])->name('menu');
+Route::get('submenu/{submenu}',[HomeController::class,'submenu'])->name('submenu');
