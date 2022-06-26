@@ -4,9 +4,9 @@
     @include('dashboard.navbar')
     <!----------Contentes------------>
 
-    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
-                          Medium     
-    </button>
+    <!--<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+                          Add     
+    </button>---->
        <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -51,10 +51,10 @@
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th class="avatar">Logo</th>
-                                            <th>Institute Name</th>
+                                            <th>Title</th>
                                             <th>Description</th>
-                                            <th>Contact</th>
+                                            <th>Image</th>
+                                            <th>uploadto</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -62,23 +62,23 @@
                                         @foreach($commonpages as $commonpage)
                                         <tr>
                                             <td class="serial">1.</td>
+                                            <td> {{$commonpage->title}} </td>
+                                            <td>  <span class="name">{{$commonpage->discription}}</span> </td>
                                             <td class="avatar">
                                                 <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="{{$detail['logo']}}" alt=""></a>
+                                                    <a href="#"><img class="rounded-circle" src="{{$commonpage->image}}" alt=""></a>
                                                 </div>
                                             </td>
-                                            <td> {{$commonpage->name}} </td>
-                                            <td>  <span class="name">{{$commonpage->discription}}</span> </td>
-                                            <td> <span class="product">{{$decommonpagetail->number}}</span> </td>
+                                            <td> <span class="product">{{$commonpage->uploadto}}</span> </td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;">
-                                                            <a class="dropdown-item" href="{{route('CommonPageEdit',$detail->id)}}">Edit</a>
-                                                            <a class="dropdown-item" href="{{route('CommonPageDelete',$detail->id)}}">delete</a>
-                                                            <a class="dropdown-item" href="{{route('CommonPageEdit',$detail->id)}}">View</a>                                                            
+                                                            <a class="dropdown-item" href="{{route('CommonPageEdit',$commonpage->id)}}">Edit</a>
+                                                            <a class="dropdown-item" href="{{route('CommonPageDelete',$commonpage->id)}}">delete</a>
+                                                            <!---<a class="dropdown-item" href="{{route('CommonPageEdit',$commonpage->id)}}">View</a>--->                                                         
                                                         </div>
                                                         </div>                                                 
                                             </td>

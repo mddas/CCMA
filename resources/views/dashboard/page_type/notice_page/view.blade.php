@@ -5,7 +5,7 @@
     <!----------Contentes------------>
 
     <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
-                          Medium     
+                          Add     
     </button>
        <div class="content">
             <div class="animated fadeIn">
@@ -44,17 +44,17 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Notice</strong>
+                                <strong class="card-title">galary Page</strong>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table" style="margin-bottom: 2rem;">
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th class="avatar">Logo</th>
-                                            <th>Institute Name</th>
+                                            <th>Title</th>
                                             <th>Description</th>
-                                            <th>Contact</th>
+                                            <th>Image</th>
+                                            <th>uploadto</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -62,23 +62,23 @@
                                         @foreach($notices as $notice)
                                         <tr>
                                             <td class="serial">1.</td>
+                                            <td> {{$notice->title}} </td>
+                                            <td>  <span class="name">{{$notice->discription}}</span> </td>
                                             <td class="avatar">
                                                 <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="{{$notice['logo']}}" alt=""></a>
+                                                    <a href="#"><img class="rounded-circle" src="{{$notice->image}}" alt=""></a>
                                                 </div>
                                             </td>
-                                            <td> {{$detail->name}} </td>
-                                            <td>  <span class="name">{{$notice->discription}}</span> </td>
-                                            <td> <span class="product">{{$notice->number}}</span> </td>
+                                            <td> <span class="product">{{$notice->uploadto}}</span> </td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;">
-                                                            <a class="dropdown-item" href="{{route('NoticePageEdit',$detail->id)}}">Edit</a>
-                                                            <a class="dropdown-item" href="{{route('NoticePageDelete',$detail->id)}}">delete</a>
-                                                            <a class="dropdown-item" href="{{route('NoticePageEdit',$detail->id)}}">View</a>                                                            
+                                                            <a class="dropdown-item" href="{{route('NoticePageEdit',$notice->id)}}">Edit</a>
+                                                            <a class="dropdown-item" href="{{route('NoticePageDelete',$notice->id)}}">delete</a>
+                                                            <a class="dropdown-item" href="{{route('NoticePageEdit',$notice->id)}}">View</a>                                                            
                                                         </div>
                                                         </div>                                                 
                                             </td>

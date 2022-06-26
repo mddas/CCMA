@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\VideoPage;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Session;
 
 class VideoPageController extends Controller
 {
@@ -11,75 +14,62 @@ class VideoPageController extends Controller
         return view("dashboard.page_type.video_page.view")->with(["videopages"=>VideoPage::all()]);
     }
     public function addForm(){
-        return view('dashboard.page_type.video_page.add');
+        $category = Category::all();      
+        $subcategory = Subcategory::all();
+        return view('dashboard.page_type.video_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
-     public function store(Request $req){
-        //  dd($req);
+      public function store(Request $req){
+        //return $req;
         $validated = $req->validate([
-        'name' => 'required',
-        'date'=>'required',
-        'number'=>'required',
-        'email'=>'required',
-        'address'=>'required',
-        'discription'=>'required',
+        'title' => 'required',
+        'uploadto'=>'required',
+        'video'=>'required',
         ]);
         //dd($req);
-       if($req->file('image')){
+       if($req->file('video')){
                 //return($req->file('image'));
-                $file= $req->file('image');
-                $company_image = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/institute_details/'), $company_image);
+                $file= $req->file('video');
+                $video = "/images/video_page/".date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('/images/video_page/'), $video);
        }
        else{
-          $company_image = null;
+          $video = null;
        }
-
-        if($req->file('logo')){
-                //return($req->file('image'));
-                $file= $req->file('logo');
-                $company_logo = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/institute_details/'), $company_logo);
-       }
-       else{
-          $company_logo = null;
-       }
-       $institutedetails = InstituteDetails::updateOrCreate(
+       $videopage = VideoPage::updateOrCreate(
             ['id' => $req['id']],
             [
-            'name'=>$req['name'],
-            'date'=>$req['date'],
-            'number'=>$req['number'],
-            'email'=>$req['email'],
-            'address'=>$req['address'],
+            'title'=>$req['title'],
             'discription'=>$req['discription'],
-            'logo'=>$company_logo,
-            'image'=>$company_image,
+            'uploadto'=>$req['uploadto'],
+            'video'=>$video,
         ]);
 
-        if($institutedetails==TRUE){
+        if($videopage==TRUE){
              Session::flash('message', 'Inserted Successfully'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('VideoPageRead'));
         }
         else{
              Session::flash('message', 'Failed to Insert'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('VideoPageRead'));
         }
         
         //return Category::all();        
     }
     public function delete($slug){
-        $institutedetails = InstituteDetails::find($slug)->delete();
-        if($institutedetails==TRUE){
+        $videopage = VideoPage::find($slug)->delete();
+        if($videopage==TRUE){
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('VideoPageRead'));
         }       
     }
     public function edit($slug){
-        $institutedetails = InstituteDetails::find($slug);
-        return view('dashboard.institute.add-details')->with(["details"=>$institutedetails]);
+        $category = Category::all();      
+        $subcategory = Subcategory::all();
+        $videopage = VideoPage::find($slug);
+        return view('dashboard.page_type.video_page.add')->with(["videopage"=>$videopage,"category"=>$category,"subcategory"=>$subcategory]);
         // return redirect(route('InstituteDetails'));
     }
 }

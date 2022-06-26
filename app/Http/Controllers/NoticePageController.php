@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\NoticePage;
+use App\Models\NoticePage ;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Session;
 
 class NoticePageController extends Controller
 {
@@ -10,76 +13,64 @@ class NoticePageController extends Controller
         //dd(InstituteDetails::all()->last()->logo);
         return view("dashboard.page_type.notice_page.view")->with(["notices"=>NoticePage::all()]);
     }
-    public function add(){
-        return view('dashboard.page_type.notice_page.add');
+    public function addForm(){
+        $category = Category::all();      
+        $subcategory = Subcategory::all();
+        return view('dashboard.page_type.notice_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
      public function store(Request $req){
-        //  dd($req);
+        //return $req;
         $validated = $req->validate([
-        'name' => 'required',
-        'date'=>'required',
-        'number'=>'required',
-        'email'=>'required',
-        'address'=>'required',
+        'title' => 'required',
         'discription'=>'required',
+        'uploadto'=>'required',
+        'image'=>'required',
         ]);
         //dd($req);
        if($req->file('image')){
                 //return($req->file('image'));
                 $file= $req->file('image');
-                $company_image = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/institute_details/'), $company_image);
+                $image = "/images/notice_page/".date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('/images/notice_page/'), $image);
        }
        else{
-          $company_image = null;
+          $image = null;
        }
-
-        if($req->file('logo')){
-                //return($req->file('image'));
-                $file= $req->file('logo');
-                $company_logo = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/institute_details/'), $company_logo);
-       }
-       else{
-          $company_logo = null;
-       }
-       $institutedetails = InstituteDetails::updateOrCreate(
+       $noticepage = NoticePage::updateOrCreate(
             ['id' => $req['id']],
             [
-            'name'=>$req['name'],
-            'date'=>$req['date'],
-            'number'=>$req['number'],
-            'email'=>$req['email'],
-            'address'=>$req['address'],
+            'title'=>$req['title'],
             'discription'=>$req['discription'],
-            'logo'=>$company_logo,
-            'image'=>$company_image,
+            'uploadto'=>$req['uploadto'],
+            'image'=>$image,
         ]);
 
-        if($institutedetails==TRUE){
+        if($noticepage==TRUE){
              Session::flash('message', 'Inserted Successfully'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('NoticePageRead'));
         }
         else{
              Session::flash('message', 'Failed to Insert'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('NoticePageRead'));
         }
         
         //return Category::all();        
     }
     public function delete($slug){
-        $institutedetails = InstituteDetails::find($slug)->delete();
-        if($institutedetails==TRUE){
+        $noticepage = NoticePage::find($slug)->delete();
+        if($noticepage==TRUE){
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('NoticePageRead'));
         }       
     }
     public function edit($slug){
-        $institutedetails = InstituteDetails::find($slug);
-        return view('dashboard.institute.add-details')->with(["details"=>$institutedetails]);
+        $category = Category::all();      
+        $subcategory = Subcategory::all();
+        $noticepage = NoticePage::find($slug);
+        return view('dashboard.page_type.notice_page.add')->with(["noticepage"=>$noticepage,"category"=>$category,"subcategory"=>$subcategory]);
         // return redirect(route('InstituteDetails'));
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\GalaryPage;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Session;
 
 class GalaryPageController extends Controller
 {
@@ -11,75 +14,63 @@ class GalaryPageController extends Controller
         return view("dashboard.page_type.galary_page.view")->with(["galarypages"=>GalaryPage::all()]);
     }
     public function addForm(){
-        return view('dashboard.page_type.galary_page.add');
+        $category = Category::all();      
+        $subcategory = Subcategory::all();
+        return view('dashboard.page_type.galary_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
      public function store(Request $req){
-        //  dd($req);
+        //return $req;
         $validated = $req->validate([
-        'name' => 'required',
-        'date'=>'required',
-        'number'=>'required',
-        'email'=>'required',
-        'address'=>'required',
-        'discription'=>'required',
+        'title' => 'required',
+        'uploadto'=>'required',
+        'image'=>'required',
         ]);
         //dd($req);
        if($req->file('image')){
                 //return($req->file('image'));
                 $file= $req->file('image');
-                $company_image = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/institute_details/'), $company_image);
+                $image = "/images/gallary_page/".date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('/images/gallary_page/'), $image);
        }
        else{
-          $company_image = null;
+          $image = null;
        }
-
-        if($req->file('logo')){
-                //return($req->file('image'));
-                $file= $req->file('logo');
-                $company_logo = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/institute_details/'), $company_logo);
-       }
-       else{
-          $company_logo = null;
-       }
-       $institutedetails = InstituteDetails::updateOrCreate(
+       $galarypage = GalaryPage::updateOrCreate(
             ['id' => $req['id']],
             [
-            'name'=>$req['name'],
-            'date'=>$req['date'],
-            'number'=>$req['number'],
-            'email'=>$req['email'],
-            'address'=>$req['address'],
+            'title'=>$req['title'],
             'discription'=>$req['discription'],
-            'logo'=>$company_logo,
-            'image'=>$company_image,
+            'uploadto'=>$req['uploadto'],
+            'image'=>$image,
         ]);
 
-        if($institutedetails==TRUE){
+        if($galarypage==TRUE){
              Session::flash('message', 'Inserted Successfully'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('GalaryPageRead'));
         }
         else{
              Session::flash('message', 'Failed to Insert'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('GalaryPageRead'));
         }
         
         //return Category::all();        
     }
     public function delete($slug){
-        $institutedetails = InstituteDetails::find($slug)->delete();
-        if($institutedetails==TRUE){
+        $galarypage = GalaryPage::find($slug)->delete();
+        if($galarypage==TRUE){
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('InstituteDetails'));
+             return redirect(route('GalaryPageRead'));
         }       
     }
     public function edit($slug){
-        $institutedetails = InstituteDetails::find($slug);
-        return view('dashboard.institute.add-details')->with(["details"=>$institutedetails]);
+        $category = Category::all();      
+        $subcategory = Subcategory::all();
+        
+        $galarypage = GalaryPage::find($slug);
+        return view('dashboard.page_type.galary_page.add')->with(["galarypage"=>$galarypage,"category"=>$category,"subcategory"=>$subcategory]);
         // return redirect(route('InstituteDetails'));
     }
 }
