@@ -14,8 +14,8 @@ class VideoPageController extends Controller
         return view("dashboard.page_type.video_page.view")->with(["videopages"=>VideoPage::all()]);
     }
     public function addForm(){
-        $category = Category::all();      
-        $subcategory = Subcategory::all();
+        $category = Category::where('type','video')->get();      
+        $subcategory = Subcategory::where()->get();
         return view('dashboard.page_type.video_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
       public function store(Request $req){

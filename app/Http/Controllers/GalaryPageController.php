@@ -14,8 +14,8 @@ class GalaryPageController extends Controller
         return view("dashboard.page_type.galary_page.view")->with(["galarypages"=>GalaryPage::all()]);
     }
     public function addForm(){
-        $category = Category::all();      
-        $subcategory = Subcategory::all();
+        $category = Category::where('type','galary')->get();      
+        $subcategory = Subcategory::where('type','galary')->get();
         return view('dashboard.page_type.galary_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
      public function store(Request $req){

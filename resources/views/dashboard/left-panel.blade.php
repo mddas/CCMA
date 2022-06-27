@@ -89,7 +89,14 @@
                         </ul>
                     </li>
 <!--************************************************************************************************-->
-
+                <li class="menu-title">MESSAGE FROM</li><!-- /.menu-title -->
+                    <li class="menu-item">
+                        <a href="{{route('MessageRead')}}" > <i class="menu-icon fa fa-cogs"></i>View</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{route('MessageAddForm')}}" > <i class="menu-icon fa fa-cogs"></i>Add</a>
+                 </li>  
+<!--************************message from end*******************************************---->
                     <!-----end left panel---->
                 </ul>
             </div><!-- /.navbar-collapse -->

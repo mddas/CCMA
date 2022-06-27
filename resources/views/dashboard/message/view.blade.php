@@ -51,34 +51,33 @@
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th>Title</th>
-                                            <th>Description</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Messages</th>
                                             <th>Image</th>
-                                            <th>uploadto</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($commonpages as $commonpage)
+                                        @foreach($messages as $message)
                                         <tr>
                                             <td class="serial">1.</td>
-                                            <td> {{$commonpage->title}} </td>
-                                            <td>  <span class="name">{{$commonpage->discription}}</span> </td>
+                                            <td> {{$message->name}} </td>
+                                            <td>  <span class="name">{{$message->position}}</span> </td>
+                                            <td>  <span class="name">{{$message->messages}}</span> </td>
                                             <td class="avatar">
                                                 <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="{{$commonpage->image}}" alt=""></a>
+                                                    <a href="#"><img class="rounded-circle" src="{{$message->image}}" alt=""></a>
                                                 </div>
-                                            </td>
-                                            <td> <span class="product">{{App\Http\Controllers\CommonPageController::getCatSub($commonpage->uploadto)}}</span> </td>
+                                            </td>                                            
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;">
-                                                            <a class="dropdown-item" href="{{route('CommonPageEdit',$commonpage->id)}}">Edit</a>
-                                                            <a class="dropdown-item" href="{{route('CommonPageDelete',$commonpage->id)}}">delete</a>
-                                                            <!---<a class="dropdown-item" href="{{route('CommonPageEdit',$commonpage->id)}}">View</a>--->                                                         
+                                                            <a class="dropdown-item" href="{{route('MessageEdit',$message->id)}}">Edit</a>
+                                                            <a class="dropdown-item" href="{{route('MessageDelete',$message->id)}}">delete</a>                                                       
                                                         </div>
                                                         </div>                                                 
                                             </td>

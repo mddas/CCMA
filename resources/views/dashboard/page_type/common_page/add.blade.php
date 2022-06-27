@@ -87,7 +87,7 @@
                                     <small class="form-text text-muted">
                                         upload related image
                                       <div class="round-img">
-                                           <a href="#"><img class="rounded-circle" src="{{$commonpage->image}}" alt="" width=30px height=30px></a>
+                                           <a href="#"><img class="rounded-circle" src="{{$commonpage->image ?? ''}}" alt="" width=30px height=30px></a>
                                      </div>
                                     </small>
                                 </div>

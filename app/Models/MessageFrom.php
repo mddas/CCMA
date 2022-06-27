@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CommonPage extends Model
+class MessageFrom extends Model
 {
     use HasFactory;
-   protected $fillable = [
-    'title',
-    'discription',
-    'uploadto',
+    protected $fillable = [
+    'name',
+    'position',
+    'messages',
     'image',
     ];
 }

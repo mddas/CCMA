@@ -14,8 +14,8 @@ class NoticePageController extends Controller
         return view("dashboard.page_type.notice_page.view")->with(["notices"=>NoticePage::all()]);
     }
     public function addForm(){
-        $category = Category::all();      
-        $subcategory = Subcategory::all();
+        $category = Category::where('type','notice')->get();      
+        $subcategory = Subcategory::where('type','notice')->get();
         return view('dashboard.page_type.notice_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
      public function store(Request $req){

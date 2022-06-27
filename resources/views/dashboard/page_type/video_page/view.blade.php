@@ -69,7 +69,7 @@
                                                     <a href="#"><img class="rounded-circle" src="{{$videopage->image}}" alt=""></a>
                                                 </div>
                                             </td>
-                                            <td> <span class="product">{{$videopage->uploadto}}</span> </td>
+                                            <td> <span class="product">{{App\Http\Controllers\CommonPageController::getCatSub($videopage->uploadto)}}</span> </td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

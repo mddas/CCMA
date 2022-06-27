@@ -146,7 +146,9 @@
                                             <option selected>Please Select Category</option>
                                                  <option value="common">SINGLE COMMON PAGE</option>
                                                  <option value="galary">SINGLE GALLARY PAGE </option>
+                                                 <!----
                                                  <option value="video">SINGLE VIDEO PAGE</option>
+                                                 ----->
                                                  <option value="notice">SINGLE NOTICE PAGE</option>
                                                  <option value="group">GROUP</option>
                                             </select>

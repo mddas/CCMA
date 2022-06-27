@@ -16,8 +16,8 @@ class CommonPageController extends Controller
     }
     public function addForm(){
         
-        $category = Category::all();      
-        $subcategory = Subcategory::all();
+        $category = Category::where('type','common')->get();     
+        $subcategory = Subcategory::where('type','common')->get();
         return view('dashboard.page_type.common_page.add')->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
      public function store(Request $req){
@@ -74,6 +74,19 @@ class CommonPageController extends Controller
      
         return view('dashboard.page_type.common_page.add')->with(["commonpage"=>$commonpage,"category"=>$category,"subcategory"=>$subcategory]);
         // return redirect(route('InstituteDetails'));
+    }
+    public function getCatSub($sub_cat_id){
+       // return $sub_cat_id;
+        $subcat = explode('_',$sub_cat_id);
+        if($subcat[0]=="category"){
+            $category = Category::find($subcat[2]);
+            return $category->name;
+        }
+        elseif($subcat[0]=="subcategory"){
+            $subcategory = SubCategory::find($subcat[2]);
+            return $subcategory->name;
+        }
+        
     }
 }
 

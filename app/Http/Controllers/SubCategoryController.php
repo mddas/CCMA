@@ -47,7 +47,7 @@ class SubCategoryController extends Controller
     }
     public function delete($slug){
         $category = SubCategory::find($slug)->delete();
-        return redirect(route("categorydelete"));
+        return redirect(route("subcategoryread"));
     }
 }
 

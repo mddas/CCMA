@@ -13,6 +13,7 @@ use App\Http\Controllers\CommonPageController;
 use App\Http\Controllers\GalaryPageController;
 use App\Http\Controllers\VideoPageController;
 use App\Http\Controllers\NoticePageController;
+use App\Http\Controllers\MessageFromController;
 use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -94,8 +95,15 @@ Route::get('/admin/page_type/notice_page/add-form',[NoticePageController::class,
 Route::POST('/admin/page_type/notice_page/store',[NoticePageController::class,'store'])->name('NoticePageStore');
 Route::get('/admin/page_type/notice_page/edit/{id}',[NoticePageController::class,'edit'])->name('NoticePageEdit');
 Route::get('/admin/page_type/notice_page/delete/{id}',[NoticePageController::class,'delete'])->name('NoticePageDelete');
+        //********************MessageFromController*********************/
+Route::get('/admin/messagefrom/view',[MessageFromController::class,'index'])->name('MessageRead');
+Route::get('/admin/messagefrom/add-form',[MessageFromController::class,'addForm'])->name('MessageAddForm');
+Route::POST('/admin/messagefrom/store',[MessageFromController::class,'store'])->name('MessageStore');
+Route::get('/admin/messagefrom/edit/{id}',[MessageFromController::class,'edit'])->name('MessageEdit');
+Route::get('/admin/messagefrom/delete/{id}',[MessageFromController::class,'delete'])->name('MessageDelete');
 
        //********************HOMECONTROLLER*******************************/
 Route::get('',[HomeController::class,'index'])->name('home');
 Route::get('menu/{menu}',[HomeController::class,'menu'])->name('menu');
 Route::get('submenu/{submenu}',[HomeController::class,'submenu'])->name('submenu');
+

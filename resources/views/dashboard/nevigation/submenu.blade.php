@@ -62,8 +62,8 @@
                                         <tr>
                                             <td class="serial">1.</td>
                                             <td> {{$subcategory->name}} </td>
-                                            <td>  <span class="name">{{$subcategory->discription}}</span> </td>
-                                            <td> <span class="product">{{$subcategory->number}}</span> </td>
+                                            <td>  <span class="name">{{$subcategory->type}}</span> </td>
+                                            <td> <span class="product">{{$subcategory->getCategory->name}}</span> </td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -148,7 +148,9 @@
                                             <option selected>Open this select menu</option>
                                             <option value="common">SINGLE COMMON PAGE</option>
                                             <option value="galary">SINGLE GALLARY PAGE </option>
+                                            <!----
                                             <option value="video">SINGLE VIDEO PAGE</option>
+                                            ----->
                                             <option value="notice">SINGLE NOTICE PAGE</option>
                                         </select>
                                      </div>

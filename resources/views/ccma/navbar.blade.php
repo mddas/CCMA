@@ -15,14 +15,17 @@
                                         <ul>
                                             <li><a href="index.html">Home</a></li>
                                             @foreach($menus as $menu)
-                                                <li><a href="#">{{$menu->name}}</a></li>
-                                            @endforeach
-                                            <li><a href="course.html">courses</a>
-                                                <ul>
-                                                <li><a href="course.html">courses</a></li>
-                                                <li><a href="course-details.html">courses details</a></li>
-                                                </ul>
+                                            <li><a href="{{route('menu',$menu->name)}}">{{$menu->name}}</a>
+                                                @if($menu->type=="group")
+                                                    <ul>
+                                                        @foreach($menu->getSubcategory as $sub)
+                                                            <li><a href="{{route('submenu',$sub->name)}}">{{$sub->name}}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
                                             </li>
+                                            @endforeach
+                                            
                                         </ul>
                                     </nav>
                                 </div>
