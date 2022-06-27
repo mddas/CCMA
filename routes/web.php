@@ -130,3 +130,9 @@ Route::get('/admin/banner/add-form',[BannerController::class,'addForm'])->name('
 Route::POST('/admin/banner/store',[BannerController::class,'store'])->name('BannerStore');
 Route::get('/admin/banner/edit/{id}',[BannerController::class,'edit'])->name('BannerEdit');
 Route::get('/admin/banner/delete/{id}',[BannerController::class,'delete'])->name('BannerDelete');
+//********************SeoController*******************************/
+Route::get('/admin/seo/view',[SeoController::class,'index'])->name('SeoRead');
+Route::get('/admin/seo/add-form',[SeoController::class,'addForm'])->name('SeoAddForm');
+Route::POST('/admin/seo/store',[SeoController::class,'store'])->name('SeoStore');
+Route::get('/admin/seo/edit/{id}',[SeoController::class,'edit'])->name('SeoEdit');
+Route::get('/admin/seo/delete/{id}',[SeoController::class,'delete'])->name('SeoDelete');

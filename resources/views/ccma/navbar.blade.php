@@ -4,7 +4,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="logo">
-								<a href="index.html"><img src="/ccma/img/logo/CCMA.png" alt="CCMA" /></a>
+								<a href="index.html"><img src="{{App\Models\InstituteDetails::getInstituteDetails()->first()->logo}}" alt="CCMA" /></a>
 							</div>
 						</div>
 						<div class="col-md-9">
@@ -13,7 +13,7 @@
                                 <div class="main-menu one text-end">
                                     <nav>
                                         <ul>
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="/">Home</a></li>
                                             @foreach($menus as $menu)
                                             <li><a href="{{route('menu',$menu->name)}}">{{$menu->name}}</a>
                                                 @if($menu->type=="group")

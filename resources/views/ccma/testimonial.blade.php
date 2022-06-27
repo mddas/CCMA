@@ -35,12 +35,10 @@
                             <h3>CCMA <span>Highlights</span></h3>
                             <div class="highlist-list">
                                 <ul>
-                                    <li>450 + CAs Qualified Under ICAN & ICAI</li>
-                                    <li>Excellent Results in CA Exams</li>
-                                    <li>Classes by Experienced Faculties & CA Toppers</li>
-                                    <li>Special Care to Science Students</li>
-                                    <li>Scholarships Available</li>
-                                    <li>CA Classes with BBS Facilities.</li>
+                                @foreach($notices as $notice)
+                                <li>{{$notice->title}}: {{substr($notice->discription,0,50)}} <span>{{$notice->created_at}}</span></li>
+                                    <!-- <li>CA Classes with BBS Facilities.</li> -->
+                                @endforeach
                                 </ul>
                             </div>
                         </div>

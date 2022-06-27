@@ -22,6 +22,7 @@ class InstituteDetailsController extends Controller
         'email'=>'required',
         'address'=>'required',
         'discription'=>'required',
+        'logo'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         //dd($req);
        if($req->file('image')){

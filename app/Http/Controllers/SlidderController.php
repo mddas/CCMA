@@ -17,7 +17,7 @@ class SlidderController extends Controller
      public function store(Request $req){
         //return $req;
         $validated = $req->validate([
-        'image' => 'required',        
+        'image' => 'required',     
         ]);
         //dd($req);
        if($req->file('image')){
@@ -33,6 +33,8 @@ class SlidderController extends Controller
             ['id' => $req['id']],
             [
             'image'=>$image,
+            'title'=>$req['title'],
+            'discription'=>$req['discription'],
         ]);
 
         if($slidder==TRUE){

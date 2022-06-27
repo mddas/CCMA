@@ -63,8 +63,8 @@
                                         <tr>
                                             <td class="serial">1.</td>
                                             <td> {{$staff->name}} </td>
-                                            <td>  <span class="name">{{$staff->describes}}</span> </td>
-                                            <td>  <span class="name">{{$staff->subject}}</span> </td>
+                                            <td>  <span class="name">{{substr($staff->describes,0,10)}}</span> </td>
+                                            <td>  <span class="name">{{substr($staff->subject,0,20)}}</span> </td>
                                             <td class="avatar">
                                                 <div class="round-img">
                                                     <a href="#"><img class="rounded-circle" src="{{$staff->image}}" alt=""></a>

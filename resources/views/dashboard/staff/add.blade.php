@@ -52,7 +52,7 @@
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                         <input name="subject" type="text" class="form-control" value="">
                                     </div>
-                                    <small class="form-text text-muted">ex. 7th Rank All Nepal Merit CAP-I Dec. 2017 Exam</small>
+                                    <small class="form-text text-muted">ex. Mathematics</small>
                                 </div>     
                                 <div class="form-group">
                                     <label class=" form-control-label">Describe</label>

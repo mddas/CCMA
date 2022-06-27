@@ -10,9 +10,8 @@
                                 <div class="col-lg-7 col-md-offset-left-5"> 
                                     <div class="slide-content-wrapper">
                                         <div class="slide-content">
-                                            <h3>Achieving Excellence</h3>
-                                            <h2>Together</h2>
-                                            <p>CCMA College is an accredited institution for CA professional studies by the Institute of Chartered Accountants of Nepal (ICAN). </p>
+                                            <h3>{{$slidder->title}}</h3>
+                                            <p>{{$slidder->discription}}</p>
                                         </div>
                                     </div>
                                 </div>

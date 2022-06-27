@@ -11,6 +11,7 @@ use App\Models\Slidder;
 use App\Models\Banner;
 use App\Models\InstituteDetails;
 use App\Models\MessageFrom;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,8 +23,9 @@ class HomeController extends Controller
         $messages = MessageFrom::all();
         $slidders = Slidder::all();
         $banners = Banner::inRandomOrder()->first();
+        $students = Student::all();
         return view("ccma.index")->with(["menus"=>$menus,"notices"=>$notice,'institute'=>$institute,'messages'=>$messages,'slidders'=>$slidders,"banners"=>$banners
-    ]);
+    ,'institute'=>$institute,'students'=>$students]);
     }
     public function menu($slug , Request $req){
     

@@ -3,78 +3,27 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h2>GLIMPSES OF SUCCESS</h2>
+                            <h2>CCMA PRIME</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="glimpses-owl owl-theme owl-carousel">
+            @foreach($students as $student)
+            <!-- start items------------------- -->
                     <div class="item">
                         <div class="single-teacher mb-5">
                             <div class="single-teacher-img">
-                                <img src="/ccma/img/teacher/teacher1.jpg" alt="teacher">
+                                <img src="{{$student->image}}" alt="student">
                             </div>
                             <div class="single-teacher-content text-center">
-                                <h2>STUART KELVIN</h2>
-                                <h4>6th Rank All Nepal Merit CAP-I Dec. 2017 Exam</h4>
+                                <h2>{{$student->name}}</h2>
+                                <h4>{{$student->rank}}</h4>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-teacher mb-5">
-                            <div class="single-teacher-img">
-                                <img src="/ccma/img/teacher/teacher2.jpg" alt="teacher">
-                            </div>
-                            <div class="single-teacher-content text-center">
-                                <h2>Suprabha Lakhe</h2>
-                                <h4>6th Rank All Nepal Merit CAP-I Dec. 2017 Exam</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-teacher mb-5">
-                            <div class="single-teacher-img">
-                                <img src="/ccma/img/teacher/teacher3.jpg" alt="teacher">  
-                            </div>
-                            <div class="single-teacher-content text-center">
-                                <h2>Prabin Shrestha</h2>
-                                <h4>7th Rank All Nepal Merit CAP-I Dec. 2017 Exam</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-teacher mb-5">
-                            <div class="single-teacher-img">
-                                <img src="/ccma/img/teacher/teacher4.jpg" alt="teacher">
-                            </div>
-                            <div class="single-teacher-content text-center">
-                                <h2>Sagarika Udas</h2>
-                                <h4>7th Rank All Nepal Merit CAP-I Dec. 2017 Exam</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-teacher mb-5">
-                            <div class="single-teacher-img">
-                                <img src="/ccma/img/teacher/teacher3.jpg" alt="teacher">  
-                            </div>
-                            <div class="single-teacher-content text-center">
-                                <h2>Prabin Shrestha</h2>
-                                <h4>7th Rank All Nepal Merit CAP-I Dec. 2017 Exam</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-teacher mb-5">
-                            <div class="single-teacher-img">
-                                <img src="/ccma/img/teacher/teacher4.jpg" alt="teacher">
-                            </div>
-                            <div class="single-teacher-content text-center">
-                                <h2>Sagarika Udas</h2>
-                                <h4>7th Rank All Nepal Merit CAP-I Dec. 2017 Exam</h4>
-                            </div>
-                        </div>
-                    </div>
+                    </div>  
+            @endforeach                                 
+        <!----------end item------------->
                     </div>
                 </div>
             </div>

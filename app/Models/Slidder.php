@@ -10,6 +10,8 @@ class Slidder extends Model
     use HasFactory;
   protected $fillable = [
     'image',
+    'title',
+    'discription',
     ];
 
 }

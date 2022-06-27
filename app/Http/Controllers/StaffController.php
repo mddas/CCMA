@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
-          public function index(){
+    public function index(){
         //dd(InstituteDetails::all()->last()->logo);
         return view("dashboard.staff.view")->with(["staffs"=>Staff::all()]);
     }
@@ -36,7 +36,7 @@ class StaffController extends Controller
             ['id' => $req['id']],
             [
             'name'=>$req['name'],
-            'describe'=>$req['describe'],
+            'describe'=>$req['describes'],
             'subject'=>$req['subject'],
             'image'=>$image,
         ]);

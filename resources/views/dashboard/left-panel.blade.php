@@ -4,7 +4,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                        <a href="/admin"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
 <!------------------------------------------------------------------------------------------------->                    
                         <!--------Institute------>
@@ -16,17 +16,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('AddInstituteDetails')}}">Add detail</a></li>
                         </ul>
                     </li>
-                    <!---
-                    <li class="menu-item-has-children dropdown">
-                        <a href="{{route('InstituteDetails')}}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>SEO</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('InstituteDetails')}}">Title</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('InstituteDetails')}}">Keywords</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('InstituteDetails')}}">Description</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('InstituteDetails')}}">images</a></li>
-                        </ul>
-                    </li>
-                    ---->
+                 
                     <!---
                     <li class="menu-item">
                         <a href="{{route('links')}}" > <i class="menu-icon fa fa-cogs"></i>Links</a>
@@ -102,7 +92,7 @@
                     <li class="menu-item">
                         <a href="{{route('MessageAddForm')}}" > <i class="menu-icon fa fa-cogs"></i>Add</a>
                  </li>  
-<!--************************message from end*******************************************---->
+<!--************************other*******************************************---->
                    <li class="menu-title">OTHERS</li><!-- /.menu-title -->
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>SLIDDER</a>
@@ -118,7 +108,17 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('BannerAddForm')}}">Add</a></li>
                         </ul>
                     </li>
-<!--************************message from end*******************************************---->
+<!--************************other end*******************************************---->
+<!---*************************SEO**************************************************--->
+     <li class="menu-title">SEO</li><!-- /.menu-title -->
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>SEO</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('SeoRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('SeoAddForm')}}">Add</a></li>
+                        </ul>
+                    </li>
+<!----************************SEO END*********************************************---->
                     <!-----end left panel---->
                 </ul>
             </div><!-- /.navbar-collapse -->

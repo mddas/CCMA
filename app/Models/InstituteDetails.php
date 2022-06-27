@@ -21,4 +21,7 @@ protected $fillable = [
     public function getJobDetail(){
         return $this->belongsTo(Job::class,'job_id');
     }
+    public static function getInstituteDetails(){
+        return InstituteDetails::all();
+    }
 }
