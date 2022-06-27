@@ -13,10 +13,10 @@ class SubCategoryController extends Controller
         return view("dashboard.nevigation.submenu")->with(["categories"=>Category::all()->where('type','group'),"subcategories"=>SubCategory::all()]);;
     }
     public function store(Request $req){
-        //dd($req);
+        // dd($req);
         $validated = $req->validate([
         'name' => 'required',
-        'subcategory_id'=>'require',
+        'category_id'=>'required',
          'type'=> 'required',
         ]);
        

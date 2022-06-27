@@ -15,6 +15,8 @@ use App\Http\Controllers\VideoPageController;
 use App\Http\Controllers\NoticePageController;
 use App\Http\Controllers\MessageFromController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SlidderController;
+use App\Http\Controllers\BannerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,9 +53,18 @@ Route::get('/admin/institute/view-details/{id}',[InstituteDetailsController::cla
 Route::get('/admin/institute/links',[LinksController::class,'index'])->name('links');
 Route::get('/admin/institute/seo',[SeoController::class,'index'])->name('seo');
 
-//**************Students controller****************/
-Route::get('/admin/student',[StudentController::class,'index'])->name('student');
-Route::get('/admin/staff',[StaffController::class,'index'])->name('staff');
+//********************StudentController*******************************/
+Route::get('/admin/student/view',[StudentController::class,'index'])->name('StudentRead');
+Route::get('/admin/student/add-form',[StudentController::class,'addForm'])->name('StudentAddForm');
+Route::POST('/admin/student/store',[StudentController::class,'store'])->name('StudentStore');
+Route::get('/admin/student/edit/{id}',[StudentController::class,'edit'])->name('StudentEdit');
+Route::get('/admin/student/delete/{id}',[StudentController::class,'delete'])->name('StudentDelete');
+//********************StaffController*******************************/
+Route::get('/admin/staff/view',[StaffController::class,'index'])->name('StaffRead');
+Route::get('/admin/staff/add-form',[StaffController::class,'addForm'])->name('StaffAddForm');
+Route::POST('/admin/staff/store',[StaffController::class,'store'])->name('StaffStore');
+Route::get('/admin/staff/edit/{id}',[StaffController::class,'edit'])->name('StaffEdit');
+Route::get('/admin/staff/delete/{id}',[StaffController::class,'delete'])->name('StaffDelete');
 
 //*************CategoryController*******************/
 Route::get('/admin/menu',[CategoryController::class,'index'])->name('categoryread');
@@ -107,3 +118,15 @@ Route::get('',[HomeController::class,'index'])->name('home');
 Route::get('menu/{menu}',[HomeController::class,'menu'])->name('menu');
 Route::get('submenu/{submenu}',[HomeController::class,'submenu'])->name('submenu');
 
+//********************SlidderController*******************************/
+Route::get('/admin/slidder/view',[SlidderController::class,'index'])->name('SlidderRead');
+Route::get('/admin/slidder/add-form',[SlidderController::class,'addForm'])->name('SlidderAddForm');
+Route::POST('/admin/slidder/store',[SlidderController::class,'store'])->name('SlidderStore');
+Route::get('/admin/slidder/edit/{id}',[SlidderController::class,'edit'])->name('SlidderEdit');
+Route::get('/admin/slidder/delete/{id}',[SlidderController::class,'delete'])->name('SlidderDelete');
+//********************BannerController*******************************/
+Route::get('/admin/banner/view',[BannerController::class,'index'])->name('BannerRead');
+Route::get('/admin/banner/add-form',[BannerController::class,'addForm'])->name('BannerAddForm');
+Route::POST('/admin/banner/store',[BannerController::class,'store'])->name('BannerStore');
+Route::get('/admin/banner/edit/{id}',[BannerController::class,'edit'])->name('BannerEdit');
+Route::get('/admin/banner/delete/{id}',[BannerController::class,'delete'])->name('BannerDelete');

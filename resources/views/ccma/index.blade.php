@@ -2,7 +2,7 @@
 @section("contents")
             @include("ccma.background-slider")
             <div class="brand-banner">
-                <img src="/ccma/img/banner/banner1.jpg">
+                <img src="{{$banners->image}}" ><!--style="height:188px;"---1351x188 or 1351x223
             </div>
             <!-- Notice Start--->
                 @include("ccma.notice")

@@ -4,8 +4,8 @@
     @include('dashboard.navbar')
     <!----------Contentes------------>
 
-    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
-                          Medium     
+    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal" style="float:right;">
+                         <img src="/images/add.png" width="50px" height="50px">  
     </button>
        <div class="content">
             <div class="animated fadeIn">
@@ -99,7 +99,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="mediumModalLabel">Medium Modal</h5>
+                            <h5 class="modal-title" id="mediumModalLabel">sub menu Modal</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -132,7 +132,7 @@
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                         <select class="form-select" aria-label="Default select example" name="category_id">
-                                            <option selected>Please Select Category</option>
+                                            <option disabled selected>Please Select Category</option>
                                               @foreach($categories as $category)
                                                  <option value="{{$category->id}}">{{$category->name}}</option>
                                                @endforeach
@@ -145,7 +145,7 @@
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                         <select class="form-select" aria-label="Default select example" name="type">
-                                            <option selected>Open this select menu</option>
+                                            <option disabled selected>Open this select menu</option>
                                             <option value="common">SINGLE COMMON PAGE</option>
                                             <option value="galary">SINGLE GALLARY PAGE </option>
                                             <!----

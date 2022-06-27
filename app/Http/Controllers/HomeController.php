@@ -7,7 +7,10 @@ use App\Models\GalaryPage;
 use App\Models\VideoPage;
 use App\Models\NoticePage;
 use App\Models\CommonPage;
+use App\Models\Slidder;
+use App\Models\Banner;
 use App\Models\InstituteDetails;
+use App\Models\MessageFrom;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +19,11 @@ class HomeController extends Controller
         $menus = Category::all();
         $notice = NoticePage::all();
         $institute = InstituteDetails::all()->last();
-        return view("ccma.index")->with(["menus"=>$menus,"notices"=>$notice,'institute'=>$institute]);
+        $messages = MessageFrom::all();
+        $slidders = Slidder::all();
+        $banners = Banner::inRandomOrder()->first();
+        return view("ccma.index")->with(["menus"=>$menus,"notices"=>$notice,'institute'=>$institute,'messages'=>$messages,'slidders'=>$slidders,"banners"=>$banners
+    ]);
     }
     public function menu($slug , Request $req){
     

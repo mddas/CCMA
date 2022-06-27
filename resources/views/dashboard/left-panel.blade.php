@@ -35,16 +35,22 @@
                 
                     <!-----Institute end------>
 <!--------------------------------------------------------------------------------------------->                    
-                    <!--------Users start------>
-                    <!---<li class="menu-title">USERS</li><!-- /.menu-title --
-                    <li class="menu-item">
-                        <a href="{{route('student')}}" > <i class="menu-icon fa fa-cogs"></i>Students</a>
+                    <!--------USERS------->
+                    <li class="menu-title">USERS</li><!-- /.menu-title -->
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>STUDENTS</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('StudentRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('StudentAddForm')}}">Add</a></li>
+                        </ul>
                     </li>
-        
-                    <li class="menu-item">
-                        <a href="{{route('InstituteDetails')}}" > <i class="menu-icon fa fa-cogs"></i>Staff</a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>STAFF</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('StaffRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('StaffAddForm')}}">Add</a></li>
+                        </ul>
                     </li>
-                    !-----users end------>
 <!------------------------------------------------------------------------------------------------>
                     <li class="menu-title">NAVIGATION</li><!-- /.menu-title -->
                     <li class="menu-item">
@@ -96,6 +102,22 @@
                     <li class="menu-item">
                         <a href="{{route('MessageAddForm')}}" > <i class="menu-icon fa fa-cogs"></i>Add</a>
                  </li>  
+<!--************************message from end*******************************************---->
+                   <li class="menu-title">OTHERS</li><!-- /.menu-title -->
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>SLIDDER</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('SlidderRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('SlidderAddForm')}}">Add</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>BANNER</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('BannerRead')}}">View</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('BannerAddForm')}}">Add</a></li>
+                        </ul>
+                    </li>
 <!--************************message from end*******************************************---->
                     <!-----end left panel---->
                 </ul>

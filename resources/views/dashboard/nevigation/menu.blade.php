@@ -4,8 +4,8 @@
     @include('dashboard.navbar')
     <!----------Contentes------------>
 
-    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
-                          Medium     
+ <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal" style="float:right;">
+                         <img src="/images/add.png" width="50px" height="50px">  
     </button>
        <div class="content">
             <div class="animated fadeIn">
@@ -143,7 +143,7 @@
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                         <select class="form-select" aria-label="Default select example" name="type">
-                                            <option selected>Please Select Category</option>
+                                            <option disabled selected>Please Select Pages</option>
                                                  <option value="common">SINGLE COMMON PAGE</option>
                                                  <option value="galary">SINGLE GALLARY PAGE </option>
                                                  <!----
@@ -153,7 +153,7 @@
                                                  <option value="group">GROUP</option>
                                             </select>
                                     </div>
-                                    <small class="form-text text-muted">Common/gallary/video/notice/</small>
+                                    <small class="form-text text-muted">Common,gallary,video,notice</small>
                                 </div>                               
                                  
                                   

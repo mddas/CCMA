@@ -4,9 +4,9 @@
     @include('dashboard.navbar')
     <!----------Contentes------------>
 
-  <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal" style="float:right;">
-                         <img src="/images/add.png" width="50px" height="50px">  
-    </button>
+    <!--<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+                          Add     
+    </button>---->
        <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -44,43 +44,39 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Institute</strong>
+                                <strong class="card-title">Common Page</strong>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table" style="margin-bottom: 2rem;">
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th class="avatar">Logo</th>
-                                            <th>Institute Name</th>
-                                            <th>Description</th>
-                                            <th>Contact</th>
+                                            <th>Banner Image</th>
+                                            <th>uploaded page</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($details as $detail)
+                                        @foreach($banners as $banner)
                                         <tr>
                                             <td class="serial">1.</td>
                                             <td class="avatar">
                                                 <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="{{$detail['logo']}}" alt=""></a>
+                                                    <a href="#"><img class="rounded-circle" src="{{$banner->image}}" alt=""></a>
                                                 </div>
                                             </td>
-                                            <td> {{$detail->name}} </td>
-                                            <td>  <span class="name">{{$detail->discription}}</span> </td>
-                                            <td> <span class="product">{{$detail->number}}</span> </td>
+                                            <td></td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;">
-                                                            <a class="dropdown-item" href="{{route('EditInstituteDetails',$detail->id)}}">Edit</a>
-                                                            <a class="dropdown-item" href="{{route('DeleteInstituteDetails',$detail->id)}}">delete</a>
-                                                            <a class="dropdown-item" href="{{route('ViewInstituteDetails',$detail->id)}}">View</a>                                                            
+                                                           
+                                                            <a class="dropdown-item" href="{{route('BannerDelete',$banner->id)}}">delete</a>
+                                                            
                                                         </div>
-                                                        </div>                                                 
+                                                    </div>                                                 
                                             </td>
                                         </tr>
                                         @endforeach
