@@ -1,68 +1,71 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Student;
-use Session;
-use Illuminate\Http\Request;
 
-class StudentController extends Controller
+use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Models\SuccessStudent;
+use Session;
+class SuccessStudentController extends Controller
 {
-      public function index(){
+     public function index(){
         //dd(InstituteDetails::all()->last()->logo);
-        return view("dashboard.student.view")->with(["students"=>Student::all()]);
+        return view("dashboard.student.student_success.view")->with(["students"=>SuccessStudent::all()]);
     }
     public function addForm(){
-        return view('dashboard.student.add')->with(['students'=>Student::all()]);
+        return view('dashboard.student.student_success.add')->with(['students'=>SuccessStudent::all()]);
     }
      public function store(Request $req){
         //return $req;
         $validated = $req->validate([
         'name' => 'required',
         'rank'=>'required',
+        'message'=>'required',
         'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         //dd($req);
        if($req->file('image')){
                 //return($req->file('image'));
                 $file= $req->file('image');
-                $image = "/images/student/".date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('/images/student/'), $image);
+                $image = "/images/student/student_success/".date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('/images/student/student_success'), $image);
        }
        else{
           $image = null;
        }
-       $student = Student::updateOrCreate(
+       $student = SuccessStudent::updateOrCreate(
             ['id' => $req['id']],
             [
             'name'=>$req['name'],
             'rank'=>$req['rank'],
+            'message'=>$req['message'],
             'image'=>$image,
         ]);
 
         if($student==TRUE){
              Session::flash('message', 'Inserted Successfully'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('StudentRead'));
+             return redirect(route('StudentSuccessRead'));
         }
         else{
              Session::flash('message', 'Failed to Insert'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('StudentRead'));
+             return redirect(route('StudentSuccessRead'));
         }
         
         //return Category::all();        
     }
     public function delete($slug){
-        $student = Student::find($slug)->delete();
+        $student = SuccessStudent::find($slug)->delete();
         if($student==TRUE){
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
-             return redirect(route('StudentRead'));
+             return redirect(route('StudentSuccessRead'));
         }       
     }
     public function edit($slug){
-        $student = Student::find($slug);     
-        return view('dashboard.student.add')->with(["students"=>$student]);
-        return redirect(route('StudentRead'));
+        $student = SuccessStudent::find($slug);     
+        return view('dashboard.student.student_success.add')->with(["student"=>$student]);
+        return redirect(route('StudentSuccessRead'));
     }
 }

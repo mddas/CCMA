@@ -20,7 +20,7 @@ class MessageFromController extends Controller
             'name' => 'required',
             'position'=>'required',
             'messages'=>'required',
-            'image'=>'required',
+             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         //dd($req);
        if($req->file('image')){

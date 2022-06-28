@@ -23,7 +23,7 @@ class GalaryPageController extends Controller
         $validated = $req->validate([
         'title' => 'required',
         'uploadto'=>'required',
-        'image'=>'required',
+        'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         //dd($req);
        if($req->file('image')){

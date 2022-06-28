@@ -20,7 +20,7 @@ class StaffController extends Controller
         'name' => 'required',
         'describes'=>'required',
         'subject'=>'required',
-        'image'=>'required',
+        'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         //dd($req);
        if($req->file('image')){

@@ -1,6 +1,39 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
+        <!--------SEO------->
+                @php
+                     $seos = App\Models\Seo::getSeo();
+                     $institute = App\Models\InstituteDetails::getInstituteDetails();
+                @endphp
+                
+                <title>{{$seos->title}}</title>
+                <meta name="title" content="{{$seos->title ?? ''}}">
+                <meta name="description" content="{{$seos->discription ?? ''}}">
+                <meta name="keywords" content="{{$seos->keyword ?? ''}}">
+                <meta name="robots" content="index, follow">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <meta name="language" content="English">
+                <meta name="revisit-after" content="1 days">
+                <meta name="author" content="{{$institute->last()->name ?? ''}} family">
+
+
+                <!-- Open Graph / Facebook -->
+                <meta property="og:type" content="website">
+                <meta property="og:url" content="{{route('home')}}">
+                <meta property="og:title" content="{{$seos->title ?? ''}}">
+                <meta property="og:description" content="{{$seos->discription ?? ''}}">
+                <meta property="og:image" content="{{$seos->image ?? ''}}">
+
+                <!-- Twitter -->
+                <meta property="twitter:card" content="summary_large_image">
+                <meta property="twitter:url" content="{{route('home')}}">
+                <meta property="twitter:title" content="{{$seos->title ?? ''}}">
+                <meta property="twitter:description" content="{{$seos->discription ?? ''}}">
+                <meta property="twitter:image" content="{{$seos->image ?? ''}}">
+
+        <!--------SEO ENDS-->
+
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>CCMA Collage</title>

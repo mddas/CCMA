@@ -4,9 +4,9 @@
     @include('dashboard.navbar')
     <!----------Contentes------------>
 
-    <!-- <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+    <!--<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
                           Add     
-    </button> -->
+    </button>---->
        <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -44,41 +44,38 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">galary Page</strong>
+                                <strong class="card-title">Common Page</strong>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table" style="margin-bottom: 2rem;">
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th>Title</th>
-                                            <th>Description</th>
+                                            <th>Student Name</th>
+                                            <th>Rank</th>
                                             <th>Image</th>
-                                            <th>uploadto</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($galarypages as $galarypage)
+                                        @foreach($students as $student)
                                         <tr>
                                             <td class="serial">1.</td>
-                                            <td> {{$galarypage->title}} </td>
-                                            <td>  <span class="name">{{$galarypage->discription}}</span> </td>
+                                            <td> {{$student->name}} </td>
+                                            <td>  <span class="name">{{$student->rank}}</span> </td>
                                             <td class="avatar">
                                                 <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="{{$galarypage->image}}" alt=""></a>
+                                                    <a href="#"><img class="rounded-circle" src="{{$student->image}}" alt=""></a>
                                                 </div>
                                             </td>
-                                            <td> <span class="product">{{App\Http\Controllers\CommonPageController::getCatSub($galarypage->uploadto)}}</span> </td>
                                             <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;">
-                                                            <a class="dropdown-item" href="{{route('GalaryPageEdit',$galarypage->id)}}">Edit</a>
-                                                            <a class="dropdown-item" href="{{route('GalaryPageDelete',$galarypage->id)}}">delete</a>
-                                                           <!--- <a class="dropdown-item" href="{{route('GalaryPageEdit',$galarypage->id)}}">View</a>  ---->                                                          
+                                                            <a class="dropdown-item" href="{{route('StudentSuccessEdit',$student->id)}}">Edit</a>
+                                                            <a class="dropdown-item" href="{{route('StudentSuccessDelete',$student->id)}}">delete</a>
                                                         </div>
                                                         </div>                                                 
                                             </td>

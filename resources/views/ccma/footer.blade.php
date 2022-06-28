@@ -1,3 +1,6 @@
+ @php
+    $institute = App\Models\InstituteDetails::getInstituteDetails()->last();
+ @endphp
  <footer class="footer-area">
             <div class="main-footer">
                 <div class="container">
@@ -5,7 +8,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-widget pr-60">
                                 <div class="footer-logo pb-25">
-                                    <a href="index.html"><img src="/ccma/img/logo/CCMA.png" alt="CCMA"></a>
+                                    <a href="index.html"><img src="{{$institute->logo ?? ''}}" alt="CCMA" onerror="this.style.display='none'"></a>
                                 </div>
                                 <p>Accredited by the Institute of Chartered Accountants of Nepal (ICAN)</p>
                                 <div class="footer-social">
@@ -45,9 +48,9 @@
                         <div class="col-lg-3 col-md-6 pt-4 pt-lg-0">
                             <div class="single-widget">
                                 <h3>get in touch</h3>
-                                <p>New Plaza Marga (North of Singha Durbar)<br> Putalisadak, Kathmandu<br>Regd. No.-23758/059-060<br>P.O. Box: 5637</p>
-                                <p><a href="tel:+97714438197">+977-1-4438197</a>, <a href="tel:+04542044">4-542044</a></p>
-                                <p><a href="mailto:ccma2003@gmail.com">ccma2003@gmail.com</a></p>
+                                <p>{{$institute->address ?? ''}}</p>
+                                <p><a href="tel:{{$institute->number ?? ''}}">{{$institute->number ?? ''}}</a></p>
+                                <p><a href="mailto:{{$institute->email ?? ''}}">{{$institute->email ?? ''}}</a></p>
                             </div>
                         </div>
                     </div>

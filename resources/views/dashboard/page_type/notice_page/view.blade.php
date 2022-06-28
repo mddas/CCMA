@@ -4,9 +4,9 @@
     @include('dashboard.navbar')
     <!----------Contentes------------>
 
-    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+    <!-- <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
                           Add     
-    </button>
+    </button> -->
        <div class="content">
             <div class="animated fadeIn">
                 <div class="row">

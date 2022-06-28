@@ -6,6 +6,7 @@ use App\Http\Controllers\InstituteDetailsController;
 use App\Http\Controllers\LinksController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SuccessStudentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
@@ -59,7 +60,15 @@ Route::get('/admin/student/add-form',[StudentController::class,'addForm'])->name
 Route::POST('/admin/student/store',[StudentController::class,'store'])->name('StudentStore');
 Route::get('/admin/student/edit/{id}',[StudentController::class,'edit'])->name('StudentEdit');
 Route::get('/admin/student/delete/{id}',[StudentController::class,'delete'])->name('StudentDelete');
+
+//********************SuccessStudentController*******************************/
+Route::get('/admin/student-success/view',[SuccessStudentController::class,'index'])->name('StudentSuccessRead');
+Route::get('/admin/student-success/add-form',[SuccessStudentController::class,'addForm'])->name('StudentSuccessAddForm');
+Route::POST('/admin/student-success/store',[SuccessStudentController::class,'store'])->name('StudentSuccessStore');
+Route::get('/admin/student-success/edit/{id}',[SuccessStudentController::class,'edit'])->name('StudentSuccessEdit');
+Route::get('/admin/student-success/delete/{id}',[SuccessStudentController::class,'delete'])->name('StudentSuccessDelete');
 //********************StaffController*******************************/
+
 Route::get('/admin/staff/view',[StaffController::class,'index'])->name('StaffRead');
 Route::get('/admin/staff/add-form',[StaffController::class,'addForm'])->name('StaffAddForm');
 Route::POST('/admin/staff/store',[StaffController::class,'store'])->name('StaffStore');

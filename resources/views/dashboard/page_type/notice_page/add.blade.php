@@ -88,7 +88,7 @@
                                     <small class="form-text text-muted">
                                         upload related image
                                       <div class="round-img">
-                                           <a href="#"><img class="rounded-circle" src="{{$noticepage->image ?? ''}}" alt="" width=30px height=30px></a>
+                                           <a href="#"><img class="rounded-circle" src="{{$noticepage->image ?? ''}}" alt="" width=30px height=30px onerror="this.style.display='none'"></a>
                                      </div>
                                     </small>
                                 </div>

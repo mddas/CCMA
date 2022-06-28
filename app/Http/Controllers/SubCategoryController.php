@@ -46,8 +46,32 @@ class SubCategoryController extends Controller
         return "view";
     }
     public function delete($slug){
-        $category = SubCategory::find($slug)->delete();
-        return redirect(route("subcategoryread"));
+        $subcategory = SubCategory::find($slug);
+        $subcategory_type = $subcategory->type;
+        if($subcategory_type=="common"){
+            $toDelete = CommonPage::where("uploadto","subcategory_id_".$subcategory->id)->get();
+        }
+        elseif($subcategory_type=="video"){
+           $toDelete = VideoPage::where("uploadto","subcategory_id_".$subcategory->id)->get();
+        }
+        elseif($subcategory_type=="galary"){
+           $toDelete = GalaryPage::where("uploadto","subcategory_id_".$subcategory->id)->get();
+        }
+        elseif($subcategory_type=="notice"){
+            $toDelete = NoticePage::where("uploadto","subcategory_id_".$subcategory->id)->get();
+        }
+        //return $toDelete;
+        if($toDelete){
+            $toDelete->each->delete();
+            //return $category;
+            $subcategory_delete = $subcategory->delete();
+            return redirect(route("subcategoryread"));
+        }
+        else{
+            return "cannot delete menus and its data";
+        }
+
+        //
     }
 }
 

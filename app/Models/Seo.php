@@ -15,4 +15,7 @@ class Seo extends Model
         'keyword',
         'image',
     ];
+     public static function getSeo(){
+         return Seo::all()->last();
+     }
 }
