@@ -44,7 +44,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Common Page</strong>
+                                <strong class="card-title">Message From</strong><span> (hints.message from chairman)</span>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table" style="margin-bottom: 2rem;">

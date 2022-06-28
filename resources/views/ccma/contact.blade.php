@@ -32,57 +32,87 @@
                         <div class="contact-contents text-center">
                             <div class="single-contact mb-65">
                                 <div class="contact-icon">
-                                    <img src="img/contact/contact1.png" alt="contact">
+                                    <img src="/ccma/img/contact/contact1.png" alt="contact">
                                 </div>
                                 <div class="contact-add">
                                     <h3>address</h3>
-                                    <p>New Plaza Marga (North of Singha Durbar)</p>
-                                    <p>Putalisadak, Kathmandu</p>
+                                    <p>{{$institutes->address ?? ''}}</p>
                                 </div>
                             </div>
                             <div class="single-contact mb-65">
                                 <div class="contact-icon">
-                                    <img src="img/contact/contact2.png" alt="contact">
+                                    <img src="/ccma/img/contact/contact2.png" alt="contact">
                                 </div>
                                 <div class="contact-add">
                                     <h3>phone</h3>
-                                    <p><a href="tel:97714438197">+977-1-4438197</a></p>
-                                    <p><a href="tel:9774542044">+977-4-542044</a></p>
+                                    <p><a href="tel:97714438197">{{$institutes->number ?? ''}}</a></p>
                                 </div>
                             </div>
                             <div class="single-contact">
                                 <div class="contact-icon">
-                                    <img src="img/contact/contact3.png" alt="contact">
+                                    <img src="/ccma/img/contact/contact3.png" alt="contact">
                                 </div>
                                 <div class="contact-add">
                                     <h3>mail</h3>
-                                    <p><a href="mailto:ccma2003@gmail.com">ccma2003@gmail.com</a></p>
+                                    <p><a href="{{$institutes->email ?? ''}}">{{$institutes->email ?? ''}}</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>    
                     <div class="col-lg-7 col-md-7">
+                        @if(Session::has('message'))
+                        <script>
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: '{{Session::get('message')}}',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                        </script>
+                    @endif
+                    @if ($errors->any())
+                    @php
+                        $er = ""
+                    @endphp
+                       @foreach($errors->all() as $error)  
+                        @php
+                            $er=$er.$error
+                        @endphp
+                       @endforeach
+                       
+                        <script>
+                          Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: '{{$er}}',
+                            footer: '<a href="">input error</a>'
+                            })
+                        </script>
+                    @endif
+
                         <div class="reply-area">
                             <h3>Contact Us</h3>
-                            <form id="contact-form">
+                            <form id="" action="{{route('ContactStore')}}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p>Name</p>
-                                        <input type="text" name="con_name">
+                                        <input type="text" name="name">
                                     </div>
                                     <div class="col-md-12">
                                         <p>Email</p>
-                                        <input type="text" name="con_email">
+                                        <input type="email" name="email">
                                     </div>
                                     <div class="col-md-12">
                                         <p>Phone</p>
-                                        <input type="text" name="con_phone">
+                                        <input type="text" name="number">
                                         <p>Massage</p>
-                                        <textarea name="con_message" cols="15" rows="10"></textarea>
+                                        <textarea name="message" cols="15" rows="10"></textarea>
                                     </div>
                                 </div>
                                 <button class="red-button" type="submit"><span>send message</span></button>
-                                <p class="form-message"></p>
+                                <!-- <p class="form-message"></p> -->
                             </form>
                         </div>
                     </div>

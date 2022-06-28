@@ -30,8 +30,10 @@ class HomeController extends Controller
     ,'institute'=>$institute,'students'=>$students,'success_students'=>$success_students]);
     }
     public function menu($slug , Request $req){
-    
         $menu = Category::where('name',$slug)->first();
+        if($menu==null){
+            return view("error.error");
+        }
         $menuType = $menu->type;
         $menu_id  = $menu->id;
         if($menu->count()>0){
@@ -79,13 +81,19 @@ class HomeController extends Controller
                    $common_page = NoticePage::where("uploadto","category_id_".$menu_id)->get();
                    return view('ccma.common_page.common_page')->with(["menus"=>$menus,"common_pages"=>$common_page,"random"=>$randomData,"slug"=>$slug]);
             }
+            else{
+                return redirect("/");
+            }
         }            
         else{
             return "null";
         }
     }
-    public function submenu($slug,Request $req){
-        $submenu = SubCategory::where('name',$slug)->first();
+    public function submenu($menuslog,$submenuslog,Request $req){
+        $submenu = SubCategory::where('name',$submenuslog)->first();
+        if($submenu==null){
+            return view("error.error");
+        }
         $submenuType = $submenu->type;
         $submenu_id  = $submenu->id;
         if($submenu->count()>0){
@@ -98,7 +106,7 @@ class HomeController extends Controller
                        $randomData = CommonPage::find($req['id']);
                    }
                    $common_page = CommonPage::where("uploadto","subcategory_id_".$submenu_id)->get();
-                   return view('ccma.common_page.common_page')->with(["menus"=>$menu,"common_pages"=>$common_page,"random"=>$randomData,"slug"=>$slug]);
+                   return view('ccma.common_page.common_page')->with(["menus"=>$menu,"common_pages"=>$common_page,"random"=>$randomData,'menuslug'=>$menuslog,"submenuslug"=>$submenuslog]);
             }
             elseif($submenuType=="galary"){
                 $menu = Category::all();
@@ -109,7 +117,7 @@ class HomeController extends Controller
                        $randomData = GalaryPage::find($req['id']);
                    }
                    $galary_page = GalaryPage::where("uploadto","subcategory_id_".$submenu_id)->get();
-                   return view('ccma.galary_page.galary')->with(["menus"=>$menu,"galary_pages"=>$galary_page,"random"=>$randomData,"slug"=>$slug]);
+                   return view('ccma.galary_page.galary')->with(["menus"=>$menu,"galary_pages"=>$galary_page,"random"=>$randomData,'menuslug'=>$menuslog,"submenuslug"=>$submenuslog]);
             }
             elseif($submenuType=="video"){
                 $menu = Category::all();
@@ -120,7 +128,7 @@ class HomeController extends Controller
                        $randomData = CommonPage::find($req['id']);
                    }
                    $common_page = CommonPage::where("uploadto","subcategory_id_".$submenu_id)->get();
-                   return view('ccma.video_page.video')->with(["menus"=>$menu,"common_pages"=>$common_page,"random"=>$randomData,"slug"=>$slug]);
+                   return view('ccma.video_page.video')->with(["menus"=>$menu,"common_pages"=>$common_page,"random"=>$randomData,'menuslug'=>$menuslog,"submenuslug"=>$submenuslog]);
             }
             elseif($submenuType=="notice"){
                 $menu = Category::all();
@@ -132,7 +140,7 @@ class HomeController extends Controller
                    }
                    //return $randomData;
                    $common_page = NoticePage::where("uploadto","subcategory_id_".$submenu_id)->get();
-                   return view('ccma.common_page.common_page')->with(["menus"=>$menu,"common_pages"=>$common_page,"random"=>$randomData,"slug"=>$slug]);
+                   return view('ccma.common_page.common_page')->with(["menus"=>$menu,"common_pages"=>$common_page,"random"=>$randomData,'menuslug'=>$menuslog,"submenuslug"=>$submenuslog]);
             }
         }            
         else{

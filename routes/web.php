@@ -123,10 +123,18 @@ Route::POST('/admin/messagefrom/store',[MessageFromController::class,'store'])->
 Route::get('/admin/messagefrom/edit/{id}',[MessageFromController::class,'edit'])->name('MessageEdit');
 Route::get('/admin/messagefrom/delete/{id}',[MessageFromController::class,'delete'])->name('MessageDelete');
 
+//*******************Message(contact us)****************************/
+Route::get('/contact',[MessageController::class,'contact'])->name('ContactUs');
+Route::get('/admin/contact/view',[MessageController::class,'index'])->name('ContactRead');
+// Route::get('/admin/seo/add-form',[SeoController::class,'addForm'])->name('SeoAddForm');
+Route::POST('/admin/contact/store',[MessageController::class,'store'])->name('ContactStore');
+Route::get('/admin/contact/edit/{id}',[MessageController::class,'edit'])->name('ContactEdit');
+Route::get('/admin/contact/delete/{id}',[MessageController::class,'delete'])->name('ContactDelete');
        //********************HOMECONTROLLER*******************************/
+       
 Route::get('',[HomeController::class,'index'])->name('home');
-Route::get('menu/{menu}',[HomeController::class,'menu'])->name('menu');
-Route::get('submenu/{submenu}',[HomeController::class,'submenu'])->name('submenu');
+Route::get('/{menu}',[HomeController::class,'menu'])->name('menu');
+Route::get('{menu}/{submenu}',[HomeController::class,'submenu'])->name('submenu');
 
 //********************SlidderController*******************************/
 Route::get('/admin/slidder/view',[SlidderController::class,'index'])->name('SlidderRead');
@@ -147,11 +155,5 @@ Route::POST('/admin/seo/store',[SeoController::class,'store'])->name('SeoStore')
 Route::get('/admin/seo/edit/{id}',[SeoController::class,'edit'])->name('SeoEdit');
 Route::get('/admin/seo/delete/{id}',[SeoController::class,'delete'])->name('SeoDelete');
 
-//*******************Message(contact us)****************************/
-Route::get('/contact',[MessageController::class,'contact'])->name('ContactUs');
-Route::get('/admin/message/view',[MessageController::class,'index'])->name('MessageRead');
-// Route::get('/admin/seo/add-form',[SeoController::class,'addForm'])->name('SeoAddForm');
-Route::POST('/admin/message/store',[MessageController::class,'store'])->name('MessageStore');
-Route::get('/admin/message/edit/{id}',[MessageController::class,'edit'])->name('MessageEdit');
-Route::get('/admin/message/delete/{id}',[MessageController::class,'delete'])->name('MessageDelete');
+
 

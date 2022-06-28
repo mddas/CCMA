@@ -9,10 +9,22 @@
                         <div class="col-12">
                             <div class="banner-content-wrapper">
                                 <div class="banner-content">
-                                    <h2>Gallery</h2>
+                                    <h2>
+                                        @if(isset($submenuslug))
+                                         {{$submenuslug}}
+                                       @else
+                                         {{$slug}}
+                                      @endif
+                                    </h2>
                                     <ul class="banner-breadcrumb">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li>Gallery</li>
+                                      @if(isset($menuslug))
+                                        <li><a href="/">HOME</a></li>
+                                        <li>{{$menuslug}}</li>
+                                        <li><a href="">{{$submenuslug}}</a></li>
+                                      @else
+                                        <li><a href="/">HOME</a></li>
+                                        <li><a href=".">{{$slug}}</a></li>
+                                      @endif
                                     </ul>
                                 </div> 
                             </div>

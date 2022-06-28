@@ -16,13 +16,6 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('AddInstituteDetails')}}">Add detail</a></li>
                         </ul>
                     </li>
-                 
-                    <!---
-                    <li class="menu-item">
-                        <a href="{{route('links')}}" > <i class="menu-icon fa fa-cogs"></i>Links</a>
-                    </li>
-                    ---->
-                
                     <!-----Institute end------>
 <!--------------------------------------------------------------------------------------------->                    
                     <!--------USERS------->
@@ -115,9 +108,13 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('BannerAddForm')}}">Add</a></li>
                         </ul>
                     </li>
+                    <!---
+                     <li class="menu-item">
+                        <a href="{{route('links')}}" > <i class="menu-icon fa fa-cogs"></i>Links</a>
+                    </li>--->
 <!--************************other end*******************************************---->
 <!---*************************SEO**************************************************--->
-     <li class="menu-title">SEO</li><!-- /.menu-title -->
+                <li class="menu-title">SEO</li><!-- /.menu-title -->
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>SEO</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -126,6 +123,10 @@
                         </ul>
                     </li>
 <!----************************SEO END*********************************************---->
+                <li class="menu-title">Contact us</li><!-- /.menu-title -->
+                      <li class="menu-item">
+                        <a href="{{route('ContactRead')}}" > <i class="menu-icon fa fa-cogs"></i>Contact us</a>
+                    </li>
                     <!-----end left panel---->
                 </ul>
             </div><!-- /.navbar-collapse -->

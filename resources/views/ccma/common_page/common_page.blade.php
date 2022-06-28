@@ -10,10 +10,22 @@
                         <div class="col-12">
                             <div class="banner-content-wrapper">
                                 <div class="banner-content">
-                                    <h2>About Us</h2>
+                                    <h2>
+                                        @if(isset($submenuslug))
+                                         {{$submenuslug}}
+                                       @else
+                                         {{$slug}}
+                                      @endif
+                                    </h2>
                                     <ul class="banner-breadcrumb">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li>About</li>
+                                      @if(isset($menuslug))
+                                        <li><a href="/">HOME</a></li>
+                                        <li>{{$menuslug}}</li>
+                                        <li><a href="">{{$submenuslug}}</a></li>
+                                      @else
+                                        <li><a href="/">HOME</a></li>
+                                        <li><a href=".">{{$slug}}</a></li>
+                                      @endif
                                     </ul>
                                 </div> 
                             </div>
@@ -31,9 +43,15 @@
                     <div class="col-md-3">
                         <div class="side-menu">
                             <ul>
-                                @foreach($common_pages as $data)
-                                    <li><a href="{{route('menu',$slug)}}/?id={{$data->id}}" @if($random->id==$data->id) class="active" @endif>{{$data->title}}</a></li>
+                             @if(isset($submenuslug))
+                                @foreach($common_pages as $data)                                  
+                                    <li><a href="{{route('submenu',[$menuslug,$submenuslug])}}/?id={{$data->id}}" @if($random->id==$data->id) class="active" @endif>{{$data->title}}</a></li>                                  
                                 @endforeach
+                             @else
+                                @foreach($common_pages as $data)                                  
+                                    <li><a href="{{route('menu',$slug)}}/?id={{$data->id}}" @if($random->id==$data->id) class="active" @endif>{{$data->title}}</a></li>                                  
+                                @endforeach
+                              @endif
                                 <!-- <li><a href="message.html" class="active">Message Form Chirman</a></li> -->
                             </ul>
                         </div>

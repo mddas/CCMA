@@ -56,6 +56,8 @@
         <link rel="stylesheet" href="/ccma/css/style.css">
         <link rel="stylesheet" href="/ccma/css/responsive.css">
         <script src="/ccma/js/vendor/modernizr-3.11.2.min.js"></script>
+         <link rel="stylesheet" href='https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css'>
+         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
         <header class="top">

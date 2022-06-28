@@ -19,13 +19,13 @@
                                                 @if($menu->type=="group")
                                                     <ul>
                                                         @foreach($menu->getSubcategory as $sub)
-                                                            <li><a href="{{route('submenu',$sub->name)}}">{{$sub->name}}</a></li>
+                                                            <li><a href="{{route('submenu',[$menu->name,$sub->name])}}">{{$sub->name}}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
                                             </li>
                                             @endforeach
-                                            
+                                             <li><a href="{{route('ContactUs')}}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
