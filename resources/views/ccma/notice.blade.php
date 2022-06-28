@@ -4,8 +4,8 @@
                     <div class="col-md-6">
                         <div class="introduce">
                             <div class="introduce-left mb-25 pb-25">
-                                <h3>{{$institute->name ?? ''." "}}<span>Introduction</span></h3>
-                                <p class="mb-15">{{$institute->discription ?? ''}}</p>
+                                <h3>{{$institute->name ?? ''." "}}<span> Introduction</span></h3>
+                                <p class="mb-15">{{substr($institute->discription ?? '' ,0,350)}}</p>
                                 <a href="#" class="red-button">Read More</a>
                             </div>
                             <iframe width="460" height="380" src="https://www.youtube.com/embed/TXutpEyJG_Q" frameborder="0" allowfullscreen="" data-gtm-yt-inspected-9="true"></iframe>   

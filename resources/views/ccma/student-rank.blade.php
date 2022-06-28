@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h2>CCMA PRIME</h2>
+                            <h2>GLIMPSES OF SUCCESS</h2>
                         </div>
                     </div>
                 </div>
