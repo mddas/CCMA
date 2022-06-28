@@ -44,7 +44,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Institute</strong>
+                                <strong class="card-title">Sub Menu</strong>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table" style="margin-bottom: 2rem;">
@@ -114,12 +114,12 @@
                             @csrf
                         <div class="card">
                             <div class="card-header">
-                                <strong>Add</strong> <small> Menus</small>
+                                <strong>Add</strong> <small>Sub Menus</small>
                             </div>
                             <div class="card-body card-block">
                                 
                                 <div class="form-group">
-                                    <label class=" form-control-label">Menu Name</label>
+                                    <label class=" form-control-label">Sub Menu Name</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                         <input name="name" type="text" class="form-control">

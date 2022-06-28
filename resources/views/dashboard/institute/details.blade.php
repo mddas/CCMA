@@ -68,7 +68,7 @@
                                                 </div>
                                             </td>
                                             <td> {{$detail->name}} </td>
-                                            <td>  <span class="name">{{$detail->discription}}</span> </td>
+                                            <td>  <span class="name">{{substr($detail->discription,0,150)."..."}}</span> </td>
                                             <td> <span class="product">{{$detail->number}}</span> </td>
                                             <td>
                                                     <div class="dropdown">

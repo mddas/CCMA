@@ -17,6 +17,7 @@ use App\Http\Controllers\NoticePageController;
 use App\Http\Controllers\MessageFromController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SlidderController;
+use App\Http\Controllers\MessageController;//this is contact us where user send message
 use App\Http\Controllers\BannerController;
 /*
 |--------------------------------------------------------------------------
@@ -145,3 +146,12 @@ Route::get('/admin/seo/add-form',[SeoController::class,'addForm'])->name('SeoAdd
 Route::POST('/admin/seo/store',[SeoController::class,'store'])->name('SeoStore');
 Route::get('/admin/seo/edit/{id}',[SeoController::class,'edit'])->name('SeoEdit');
 Route::get('/admin/seo/delete/{id}',[SeoController::class,'delete'])->name('SeoDelete');
+
+//*******************Message(contact us)****************************/
+Route::get('/contact',[MessageController::class,'contact'])->name('ContactUs');
+Route::get('/admin/message/view',[MessageController::class,'index'])->name('MessageRead');
+// Route::get('/admin/seo/add-form',[SeoController::class,'addForm'])->name('SeoAddForm');
+Route::POST('/admin/message/store',[MessageController::class,'store'])->name('MessageStore');
+Route::get('/admin/message/edit/{id}',[MessageController::class,'edit'])->name('MessageEdit');
+Route::get('/admin/message/delete/{id}',[MessageController::class,'delete'])->name('MessageDelete');
+

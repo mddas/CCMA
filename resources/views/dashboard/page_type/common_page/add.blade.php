@@ -47,7 +47,7 @@
                                     <small class="form-text text-muted">ex. About us</small>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" form-control-label"></label>
+                                    <label class=" form-control-label">Describes</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                         <textarea name="discription" type="text" class="form-control">{{$commonpage->discription ?? ''}}</textarea>
@@ -70,7 +70,7 @@
                                             @endforeach                                          
                                         </select>
                                     </div>    
-                                     <small class="form-text text-muted">upload to ABOUT</small>                            
+                                     <small class="form-text text-muted">hints. upload to ABOUT</small>                            
                                 </div>
                                  
                                       
@@ -85,9 +85,9 @@
                                         <input type="hidden" name="id" value="{{$commonpage->id ?? ''}}">
                                     </div>
                                     <small class="form-text text-muted">
-                                        upload related image
+                                       hints. upload related image
                                       <div class="round-img">
-                                           <a href="#"><img class="rounded-circle" src="{{$commonpage->image ?? ''}}" alt="" width=30px height=30px></a>
+                                           <a href="#"><img class="rounded-circle" src="{{$commonpage->image ?? ''}}" alt="" width=30px height=30px onerror="this.style.display='none'"></a>
                                      </div>
                                     </small>
                                 </div>

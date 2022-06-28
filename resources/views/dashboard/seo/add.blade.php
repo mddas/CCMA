@@ -50,7 +50,7 @@
                                     <label class=" form-control-label">discription</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                        <textarea name="discription" type="text" class="form-control">{{$seos->discription}}</textarea>
+                                        <textarea name="discription" type="text" class="form-control">{{$seos->discription ?? ''}}</textarea>
                                     </div>
                                     <small class="form-text text-muted">about your institute that display on google seo</small>
                                 </div>     
@@ -58,7 +58,7 @@
                                     <label class=" form-control-label">keywords</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                        <input name="keyword" type="text" class="form-control" value="{{$seos->keyword}}">
+                                        <input name="keyword" type="text" class="form-control" value="{{$seos->keyword ?? ''}}">
                                     </div>
                                     <small class="form-text text-muted">ex. ccma,ccma college etc.</small>
                                 </div>                           
@@ -71,7 +71,7 @@
   <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
 </svg></div>
                                         <input type="file" name="image" class="form-control">
-                                        <input type="hidden" name="id" value="{{$seos->id}}">
+                                        <input type="hidden" name="id" value="{{$seos->id ?? ''}}">
                                     </div>
                                     <small class="form-text text-muted">
                                         upload student image

@@ -14,7 +14,6 @@ class InstituteDetailsController extends Controller
         return view('dashboard.institute.add-details');
     }
      public function store(Request $req){
-        //  dd($req);
         $validated = $req->validate([
         'name' => 'required',
         'date'=>'required',
@@ -40,22 +39,33 @@ class InstituteDetailsController extends Controller
                 $file= $req->file('logo');
                 $company_logo = "/images/institute_details/".date('YmdHi').$file->getClientOriginalName();
                 $file-> move(public_path('/images/institute_details/'), $company_logo);
+            $institutedetails = InstituteDetails::updateOrCreate(
+                    ['id' => $req['id']],
+                    [
+                    'name'=>$req['name'],
+                    'date'=>$req['date'],
+                    'number'=>$req['number'],
+                    'email'=>$req['email'],
+                    'address'=>$req['address'],
+                    'discription'=>$req['discription'],
+                    'logo'=>$company_logo,
+                    'image'=>$company_image,
+                  ]);
        }
        else{
-          $company_logo = null;
+          $institutedetails = InstituteDetails::updateOrCreate(
+                    ['id' => $req['id']],
+                    [
+                    'name'=>$req['name'],
+                    'date'=>$req['date'],
+                    'number'=>$req['number'],
+                    'email'=>$req['email'],
+                    'address'=>$req['address'],
+                    'discription'=>$req['discription'],
+                    'image'=>$company_image,
+                  ]);
        }
-       $institutedetails = InstituteDetails::updateOrCreate(
-            ['id' => $req['id']],
-            [
-            'name'=>$req['name'],
-            'date'=>$req['date'],
-            'number'=>$req['number'],
-            'email'=>$req['email'],
-            'address'=>$req['address'],
-            'discription'=>$req['discription'],
-            'logo'=>$company_logo,
-            'image'=>$company_image,
-        ]);
+ 
 
         if($institutedetails==TRUE){
              Session::flash('message', 'Inserted Successfully'); 

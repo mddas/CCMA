@@ -15,12 +15,11 @@ class SeoController extends Controller
         return view('dashboard.seo.add');//->with(['category'=>$category,"subcategory"=>$subcategory]);
     }
      public function store(Request $req){
-        //return $req;
         $validated = $req->validate([
         'title' => 'required',
         'discription'=>'required',
         'keyword'=>'required',
-        'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         //dd($req);
        if($req->file('image')){
@@ -28,17 +27,24 @@ class SeoController extends Controller
                 $file= $req->file('image');
                 $image = "/images/seo/".date('YmdHi').$file->getClientOriginalName();
                 $file-> move(public_path('/images/seo/'), $image);
+            $seo = Seo::updateOrCreate(
+                ['id' => $req['id']],
+             [
+                'title'=>$req['title'],
+                'discription'=>$req['discription'],
+                'keyword'=>$req['keyword'],
+                'image'=>$image,            
+             ]);
        }
        else{
-          $image = null;
-       }
-       $seo = Seo::updateOrCreate(
-            ['id' => $req['id']],
-            [
-            'title'=>$req['title'],
-            'discription'=>$req['discription'],
-            'keyword'=>$req['keyword'],
-        ]);
+            $seo = Seo::updateOrCreate(
+                ['id' => $req['id']],
+             [
+                'title'=>$req['title'],
+                'discription'=>$req['discription'],
+                'keyword'=>$req['keyword'],           
+             ]);
+       }      
 
         if($seo==TRUE){
              Session::flash('message', 'Inserted Successfully'); 

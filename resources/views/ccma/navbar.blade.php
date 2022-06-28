@@ -4,7 +4,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="logo">
-								<a href="index.html"><img src="{{App\Models\InstituteDetails::getInstituteDetails()->first()->logo ?? ''}}" alt="CCMA" onerror="this.style.display='none'"/></a>
+								<a href="/"><img src="{{App\Models\InstituteDetails::getInstituteDetails()->first()->logo ?? ''}}" alt="CCMA" onerror="this.style.display='none'"/></a>
 							</div>
 						</div>
 						<div class="col-md-9">
