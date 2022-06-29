@@ -28,6 +28,8 @@
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
    <style>
     #weatherWidget .currentDesc {
         color: #ffffff!important;

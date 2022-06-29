@@ -108,10 +108,10 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('BannerAddForm')}}">Add</a></li>
                         </ul>
                     </li>
-                    <!---
+                    
                      <li class="menu-item">
                         <a href="{{route('links')}}" > <i class="menu-icon fa fa-cogs"></i>Links</a>
-                    </li>--->
+                    </li>
 <!--************************other end*******************************************---->
 <!---*************************SEO**************************************************--->
                 <li class="menu-title">SEO</li><!-- /.menu-title -->

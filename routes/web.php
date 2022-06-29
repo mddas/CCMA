@@ -34,6 +34,11 @@ use App\Http\Controllers\BannerController;
 //     return view('welcome');
 // });
 
+
+/*******constructing websites*********************/
+Route::get('',function(){
+        return view("error.error");
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -50,9 +55,13 @@ Route::post('/admin/institute/store-details',[InstituteDetailsController::class,
 Route::get('/admin/institute/delete-details/{id}',[InstituteDetailsController::class,'delete'])->name('DeleteInstituteDetails');
 Route::get('/admin/institute/edit-details/{id}',[InstituteDetailsController::class,'edit'])->name('EditInstituteDetails');
 Route::get('/admin/institute/view-details/{id}',[InstituteDetailsController::class,'view'])->name('ViewInstituteDetails');
+/******************links**************************************/
+Route::get('/admin/links',[LinksController::class,'index'])->name('links');
+Route::post('/admin/store/',[LinksController::class,'store'])->name('linkstore');
+Route::get('/admin/delete/{id}',[LinksController::class,'delete'])->name('linkdelete');
+Route::get('/admin/edit/{id}',[LinksController::class,'edit'])->name('linkedit');
+/**************************************************************/
 
-
-Route::get('/admin/institute/links',[LinksController::class,'index'])->name('links');
 Route::get('/admin/institute/seo',[SeoController::class,'index'])->name('seo');
 
 //********************StudentController*******************************/
@@ -132,7 +141,7 @@ Route::get('/admin/contact/edit/{id}',[MessageController::class,'edit'])->name('
 Route::get('/admin/contact/delete/{id}',[MessageController::class,'delete'])->name('ContactDelete');
        //********************HOMECONTROLLER*******************************/
        
-Route::get('',[HomeController::class,'index'])->name('home');
+Route::get('remove',[HomeController::class,'index'])->name('home');
 Route::get('/{menu}',[HomeController::class,'menu'])->name('menu');
 Route::get('{menu}/{submenu}',[HomeController::class,'submenu'])->name('submenu');
 
