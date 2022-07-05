@@ -15,5 +15,10 @@ class Category extends Model
     public function getSubcategory(){
         return $this->hasMany(SubCategory::class);
     }
+
+    static function getcategory($id){
+        $cat =  Category::find($id);
+        return $cat->name;
+    }
     
 }

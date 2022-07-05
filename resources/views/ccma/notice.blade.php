@@ -16,8 +16,20 @@
                             <h3>News & <span>Notices</span></h3>
                             <!------notice------------>
                             @foreach($notices as $notice)
+                                @php
+                                    $uploadto = $notice->uploadto;
+                                    $splitUploadto = explode('_' , $uploadto);
+                                    $cat_sub = $splitUploadto[0];
+                                    $id = $splitUploadto[2];
+                                    if($cat = "category"){
+                                        $name = App\Models\Category::getcategory($id);
+                                    }
+                                    elseif($cat = "subcategory"){
+                                        $name = "#";
+                                    }
+                                @endphp
                                 <div class="single-notice-right mb-25 pb-25">
-                                    <h4>{{$notice->title ?? ''}}: {{substr($notice->discription ?? '',0,50)}} <span>{{$notice->created_at ?? ''}}</span></h4>
+                                    <h4><a href="{{$name}}">{{$notice->title ?? ''}}: {{substr($notice->discription ?? '',0,50)}} <span>{{$notice->created_at ?? ''}}</span></a></h4>
                                 </div>
                             @endforeach
                             <!------------notice end--------------->
