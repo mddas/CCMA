@@ -22,15 +22,22 @@
                                     $cat_sub = $splitUploadto[0];
                                     $id = $splitUploadto[2];
                                     if($cat = "category"){
-                                        $name = App\Models\Category::getcategory($id);
+                                        $menu = App\Models\Category::getcategory($id);
                                     }
                                     elseif($cat = "subcategory"){
-                                        $name = "#";
+                                        $submenu = "#";
                                     }
                                 @endphp
-                                <div class="single-notice-right mb-25 pb-25">
-                                    <h4><a href="{{$name}}">{{$notice->title ?? ''}}: {{substr($notice->discription ?? '',0,50)}} <span>{{$notice->created_at ?? ''}}</span></a></h4>
-                                </div>
+                               
+                                @if($cat = "category")
+                                    <div class="single-notice-right mb-25 pb-25">
+                                        <h4><a href="{{route('menu',$menu)}}/?id={{$notice->id}}">{{$notice->title ?? ''}}: {{substr($notice->discription ?? '',0,50)}} <span>{{$notice->created_at ?? ''}}</span></a></h4>
+                                    </div>
+                                @elseif($cat = "subcategory")
+                                    <div class="single-notice-right mb-25 pb-25">
+                                        <h4><a href="#">{{$notice->title ?? ''}}: {{substr($notice->discription ?? '',0,50)}} <span>{{$notice->created_at ?? ''}}</span></a></h4>
+                                    </div>
+                                @endif
                             @endforeach
                             <!------------notice end--------------->
                         </div>

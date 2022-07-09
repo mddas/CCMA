@@ -49,8 +49,13 @@ class BannerController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $slidder = Banner::find($slug)->delete();
-        if($slidder==TRUE){
+        $slidder = Banner::find($slug);
+        $image = $slidder->image;
+        $slidder_delete = $slidder->delete();
+        if($slidder_delete==TRUE){
+             if(unlink(substr($image,1))){
+                 
+             }
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('BannerRead'));

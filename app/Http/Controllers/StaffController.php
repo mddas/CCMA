@@ -55,8 +55,11 @@ class StaffController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $staff = Staff::find($slug)->delete();
+        $staff = Staff::find($slug);
+        $image = $staff->image;
+        $staff_delete = $staff->delete();
         if($staff==TRUE){
+             unlink(substr($image,1));
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('StaffRead'));

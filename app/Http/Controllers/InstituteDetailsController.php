@@ -81,8 +81,16 @@ class InstituteDetailsController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $institutedetails = InstituteDetails::find($slug)->delete();
-        if($institutedetails==TRUE){
+        $institutedetails = InstituteDetails::find($slug);
+        $image = $institutedetails->image;
+        $logo = $institutedetails->logo;
+        $institutedetails_delete = $institutedetails->delete();
+        if($institutedetails_delete==TRUE){
+             if(unlink(substr($image,1))){
+                }   
+             if(unlink(substr($logo,1))){
+
+             }
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('InstituteDetails'));

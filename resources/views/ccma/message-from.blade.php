@@ -19,7 +19,7 @@
                                         }
                                     </style>
                                 <h2>Message From {{$message->position}}(<span>{{$message->name}}</span>)</h2>
-                                <p>{{$substr($message->messages,300)}}</p>
+                                <p>{{substr($message->message,300)}}</p>
                                     <a class="red-button" href="#">Read More</a>
                                 </div>  
                             </div>

@@ -59,8 +59,13 @@ class NoticePageController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $noticepage = NoticePage::find($slug)->delete();
-        if($noticepage==TRUE){
+        $noticepage = NoticePage::find($slug);
+        $image = $noticepage->image;
+        $noticepage_delete = $noticepage->delete();
+        if($noticepage_delete==TRUE){
+             if(unlink(substr($image,1))){
+                 
+             }
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('NoticePageRead'));

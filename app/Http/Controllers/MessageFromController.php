@@ -55,8 +55,13 @@ class MessageFromController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $message_from = MessageFrom::find($slug)->delete();
-        if($message_from==TRUE){
+        $message_from = MessageFrom::find($slug);
+        $image= $message_from->image;
+        $message_from_delete = $message_from->delete();
+        if($message_from_delete==TRUE){
+             if(unlink(substr($image,1))){
+                 
+             }
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('MessageRead'));

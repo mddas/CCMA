@@ -60,8 +60,11 @@ class CommonPageController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $commonpage = CommonPage::find($slug)->delete();
-        if($commonpage==TRUE){
+        $commonpage = CommonPage::find($slug);
+        $image = $commonpage->image;
+        $commonpage_delete = $commonpage->delete();
+        if($commonpage_delete==TRUE){
+             unlink(substr($image,1));
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('CommonPageRead'));

@@ -56,8 +56,11 @@ class SuccessStudentController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $student = SuccessStudent::find($slug)->delete();
+        $student = SuccessStudent::find($slug);
+        $image = $student->image;
+        $student_delete = $student->delete();
         if($student==TRUE){
+             unlink(substr($image,1));
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('StudentSuccessRead'));

@@ -58,8 +58,11 @@ class GalaryPageController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $galarypage = GalaryPage::find($slug)->delete();
-        if($galarypage==TRUE){
+        $galarypage = GalaryPage::find($slug);
+        $image = $galarypage->image;
+        $galarypage_delete = $galarypage->delete();
+        if($galarypage_delete==TRUE){
+              unlink(substr($image,1));
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('GalaryPageRead'));

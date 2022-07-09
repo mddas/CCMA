@@ -36,9 +36,9 @@ use App\Http\Controllers\BannerController;
 
 
 /*******constructing websites*********************/
-Route::get('',function(){
-        return view("error.error");
-});
+// Route::get('',function(){
+//         return view("error.error");
+// });
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -141,7 +141,7 @@ Route::get('/admin/contact/edit/{id}',[MessageController::class,'edit'])->name('
 Route::get('/admin/contact/delete/{id}',[MessageController::class,'delete'])->name('ContactDelete');
        //********************HOMECONTROLLER*******************************/
        
-Route::get('remove',[HomeController::class,'index'])->name('home');
+Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/{menu}',[HomeController::class,'menu'])->name('menu');
 Route::get('{menu}/{submenu}',[HomeController::class,'submenu'])->name('submenu');
 

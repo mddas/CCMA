@@ -60,8 +60,13 @@ class SeoController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $seo = Seo::find($slug)->delete();
-        if($seo==TRUE){
+        $seo = Seo::find($slug);
+        $image = $seo->image;
+        $seo_delete = $seo->delete();
+        if($seo_delete==TRUE){
+             if(unlink(substr($image,1))){
+                 
+             }
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('SeoRead'));
