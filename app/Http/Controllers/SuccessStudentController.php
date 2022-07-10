@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\SuccessStudent;
 use Session;
+use File;
 class SuccessStudentController extends Controller
 {
      public function index(){
@@ -60,7 +61,7 @@ class SuccessStudentController extends Controller
         $image = $student->image;
         $student_delete = $student->delete();
         if($student==TRUE){
-             unlink(substr($image,1));
+             File::delete(substr($image,1));
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('StudentSuccessRead'));

@@ -11,7 +11,8 @@
                 @include("ccma.message-from")
             <!----Message end----->
             <!----Student Rank---->
-                @include("ccma.student-rank")
+                @include("ccma.student-rank")<!---success--->
+                @include("ccma.events")
             <!----student rank end--->
             <!-- Testimonial Area Start -->
                 @include("ccma.testimonial")

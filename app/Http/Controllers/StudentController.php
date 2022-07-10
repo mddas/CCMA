@@ -1,8 +1,9 @@
 <?php
-
+//GLIMPSES OF SUCCESS
 namespace App\Http\Controllers;
 use App\Models\Student;
 use Session;
+use File;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -53,7 +54,10 @@ class StudentController extends Controller
         //return Category::all();        
     }
     public function delete($slug){
-        $student = Student::find($slug)->delete();
+        $student = Student::find($slug);
+        $image = substr($student->image,1);
+        $student->delete();
+        File::delete($image);
         if($student==TRUE){
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');

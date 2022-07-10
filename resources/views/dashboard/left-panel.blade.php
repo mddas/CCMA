@@ -21,7 +21,7 @@
                     <!--------USERS------->
                     <li class="menu-title">USERS</li><!-- /.menu-title -->
                      <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>STUDENTS</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>GLIMPSES OF SUCCESS</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('StudentRead')}}">View</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="{{route('StudentAddForm')}}">Add</a></li>

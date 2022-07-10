@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\SubCategory;
+
+use App\Models\CommonPage;
+use App\Models\VideoPage;
+use App\Models\GalaryPage;
+use App\Models\NoticePage;
+
 use Session;
 use Illuminate\Http\Request;
 

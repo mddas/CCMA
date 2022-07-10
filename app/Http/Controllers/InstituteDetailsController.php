@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\InstituteDetails;
 use Illuminate\Http\Request;
+use File;
 use Session;
 class InstituteDetailsController extends Controller
 {
@@ -86,11 +87,7 @@ class InstituteDetailsController extends Controller
         $logo = $institutedetails->logo;
         $institutedetails_delete = $institutedetails->delete();
         if($institutedetails_delete==TRUE){
-             if(unlink(substr($image,1))){
-                }   
-             if(unlink(substr($logo,1))){
-
-             }
+             File::delete(substr($image,1),substr($logo,1));
              Session::flash('message', 'Deleted completed'); 
              Session::flash('alert-success', 'success');
              return redirect(route('InstituteDetails'));
