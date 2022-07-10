@@ -19,8 +19,8 @@
                                         }
                                     </style>
                                 <h2>Message From {{$message->position}}(<span>{{$message->name}}</span>)</h2>
-                                <p>{{substr($message->message,300)}}</p>
-                                    <a class="red-button" href="#">Read More</a>
+                                <p>{{$message->messages}}</p>
+                                <a class="blue-button" href="#">Read More</a>
                                 </div>  
                             </div>
                             <div class="col-sm-4">
